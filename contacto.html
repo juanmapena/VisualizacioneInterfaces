@@ -49,12 +49,13 @@
     .form-input,
     .form-textarea {
       width: 100%;
-      padding: 14px 18px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
+      padding: 10px 0;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
       font-family: var(--font-body);
-      font-size: 15px;
-      background-color: var(--bg-surface);
+      font-size: 16px;
+      background-color: transparent;
       color: var(--color-text-dark);
       transition: var(--transition-fast);
     }
@@ -62,8 +63,8 @@
     .form-input:focus,
     .form-textarea:focus {
       outline: none;
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(182, 28, 37, 0.1);
+      border-bottom-color: var(--color-primary);
+      box-shadow: none;
     }
 
     .form-row {
@@ -112,48 +113,48 @@
     <section class="section">
       <div class="container">
         <div class="section-header" style="text-align: left; margin-bottom: 40px; max-width: 100%;">
-          <span class="section-subtitle">Trabajemos juntos</span>
+
           <h1 class="hero-title" style="margin-bottom: 16px;">Contacto e Instituciones Adheridas</h1>
           <p class="hero-description" style="max-width: 700px;">
-            ¿Sos un hospital o centro de salud? Sumate a la Red Nacional de Donación de Sangre para optimizar la
-            distribución en toda la Argentina.
+            ¿Sos un hospital o centro de salud? Sumate a la Red Nacional de Donación de Sangre o simplemente realizá una
+            consulta.
           </p>
         </div>
 
         <div class="contact-grid">
           <!-- Form Container -->
-          <div class="stock-card" style="padding: 36px;">
+          <div class="stock-card" style="padding: 36px; background-color: #ffffff;">
             <form id="contactForm" onsubmit="event.preventDefault(); alert('¡Solicitud enviada con éxito!');">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Hospital / Institución</label>
-                  <input type="text" class="form-input" placeholder="ej. Hospital Central" required />
+                  <input type="text" class="form-input" required />
                 </div>
                 <div class="form-group">
                   <label class="form-label">Ubicación</label>
-                  <input type="text" class="form-input" placeholder="Ciudad, Provincia" required />
+                  <input type="text" class="form-input" required />
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Persona de Contacto</label>
-                  <input type="text" class="form-input" placeholder="Nombre completo" required />
+                  <input type="text" class="form-input" required />
                 </div>
                 <div class="form-group">
                   <label class="form-label">DNI del Responsable</label>
-                  <input type="text" class="form-input" placeholder="Número de documento" required />
+                  <input type="text" class="form-input" required />
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="form-label">Mensaje o Consulta</label>
-                <textarea class="form-textarea" rows="5"
-                  placeholder="Contanos cómo tu institución desea integrarse a la red..." required></textarea>
+                <textarea class="form-textarea" rows="5" required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">
                 Enviar Solicitud
+              </button>
             </form>
           </div>
 
