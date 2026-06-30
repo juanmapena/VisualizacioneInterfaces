@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis Turnos | SangreCerca</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Material Symbols Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Pure CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(23, 27, 43, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.hidden {
+      display: none;
+    }
+    .modal-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      max-width: 540px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .time-slot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .time-slot-btn {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-text-dark);
+      background: var(--bg-surface-alt);
+      transition: var(--transition-fast);
+    }
+    .time-slot-btn:hover, .time-slot-btn.selected {
+      background: var(--color-primary-container);
+      color: #ffffff;
+      border-color: var(--color-primary-container);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dash-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="dash-sidebar">
+      <a href="index.html" class="dash-sidebar-logo">SangreCerca<span style="color:var(--color-primary-container);">.</span></a>
+      
+      <div class="dash-user-card">
+        <div class="dash-user-avatar">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
+          <span class="dash-user-badge">A+</span>
+        </div>
+        <div class="dash-user-info">
+          <h4>Sofía Martínez</h4>
+          <p>Donante Voluntaria</p>
+        </div>
+      </div>
+
+      <nav class="dash-nav">
+        <a href="panel-de-control.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">dashboard</span> Panel de Control
+        </a>
+        <a href="mis-turnos.html" class="dash-nav-link active">
+          <span class="material-symbols-outlined">calendar_today</span> Mis Turnos
+        </a>
+        <a href="agendar-turno.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">add_circle</span> Agendar Turno
+        </a>
+        <a href="historial-medico.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">history</span> Historial Médico
+        </a>
+        <a href="panel-de-control-en-recuperacion.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">monitor_heart</span> Recuperación
+        </a>
+        <a href="mi-perfil.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">person</span> Mi Perfil
+        </a>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <a href="index.html" class="dash-nav-link" style="color: var(--color-primary);">
+          <span class="material-symbols-outlined">logout</span> Cerrar Sesión
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="dash-main">
+      <!-- Top Header -->
+      <header class="dash-header">
+        <h1 class="dash-header-title">Mis Turnos</h1>
+        
+        <div class="dash-header-actions">
+          <div class="dash-factor-pill">
+            <span>Factor A+</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">water_drop</span>
+          </div>
+          <button style="color: var(--color-secondary); position: relative;" title="Notificaciones">
+            <span class="material-symbols-outlined">notifications</span>
+            <span style="position: absolute; top: 0; right: 0; width: 8px; height: 8px; background-color: var(--color-primary); border-radius: 50%;"></span>
+          </button>
+          <div style="width: 1px; height: 24px; background-color: var(--border-light);"></div>
+          <div class="dash-header-user">
+            <span style="font-weight: 700; font-size: 14px; color: var(--color-text-dark);">Sofía Martínez</span>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <div class="dash-content-body">
+        <div style="margin-bottom: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 26px; color: var(--color-text-dark); margin-bottom: 6px;">Gestión de Citas</h2>
+            <p style="font-size: 15px; color: var(--color-secondary);">Revisá los detalles de tus próximos turnos o agendá una nueva donación.</p>
+          </div>
+          <a href="agendar-turno.html" class="btn btn-primary">
+            <span class="material-symbols-outlined">add</span> Agendar Nuevo Turno
+          </a>
+        </div>
+
+        <!-- Appointments Stack -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Upcoming Primary Appointment Card -->
+          <div class="stock-card" style="padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+              <div style="flex: 1; min-width: 280px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                  <span class="stock-badge critical">Próximo Turno</span>
+                  <span style="font-size: 14px; font-weight: 700; color: var(--color-primary); display: flex; align-items: center; gap: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">event_upcoming</span> En 2 días
+                  </span>
+                </div>
+                <h3 id="cardHospitalName" style="font-family: var(--font-heading); font-size: 22px; color: var(--color-text-dark); margin-bottom: 12px;">Hospital de Clínicas José de San Martín</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 8px; color: var(--color-secondary); font-size: 14px;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--color-primary);">location_on</span>
+                    <span id="cardHospitalAddress">Av. Córdoba 2351, Ciudad Autónoma de Buenos Aires</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--color-primary);">schedule</span>
+                    <span id="cardHospitalTime">Jueves, 12 de Octubre - 09:30 AM</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: var(--color-primary);">bloodtype</span>
+                    Tipo de Donación: Sangre Entera (Factor A+)
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px; min-width: 180px;">
+                <button class="btn btn-primary" onclick="showConfirmModal()" style="width: 100%; justify-content: center;">
+                  Confirmar Asistencia
+                </button>
+                <button class="btn btn-outline" onclick="showReprogramModal()" style="width: 100%; justify-content: center; font-size: 13px;">
+                  Reprogramar Turno
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal 1: Confirmation Details Modal -->
+  <div id="confirm-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px;">
+          <span class="material-symbols-outlined" style="color: var(--status-good);">verified</span> Información del Turno Confirmado
+        </h3>
+        <button onclick="toggleModal('confirm-modal')" style="color: var(--color-secondary);"><span class="material-symbols-outlined">close</span></button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; background-color: var(--bg-surface-alt); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase;">Centro Hospitalario</span>
+          <h4 style="font-family: var(--font-heading); font-size: 18px; color: var(--color-text-dark); margin-top: 2px;" id="modalHospital">Hospital de Clínicas José de San Martín</h4>
+        </div>
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase;">Ubicación</span>
+          <p style="font-size: 14px; color: var(--color-text-dark);" id="modalAddress">Av. Córdoba 2351, CABA</p>
+        </div>
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase;">Fecha y Hora</span>
+          <p style="font-size: 14px; font-weight: 700; color: var(--color-primary);" id="modalTime">Jueves, 12 de Octubre - 09:30 AM</p>
+        </div>
+        <div>
+          <span style="font-size: 12px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase;">Donante / Factor</span>
+          <p style="font-size: 14px; color: var(--color-text-dark);">Sofía Martínez (DNI 41.223.884) - Factor A+</p>
+        </div>
+      </div>
+
+      <div style="background-color: var(--status-warning-bg); padding: 14px; border-radius: var(--radius-sm); border-left: 4px solid var(--status-warning); margin-bottom: 24px; font-size: 13px; color: var(--color-text-dark);">
+        <strong>Recordatorio importante:</strong> Recordá concurrir con tu DNI original, habiendo desayunado sin grasas ni lácteos, e hidratarte adecuadamente.
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="toggleModal('confirm-modal')">
+        Entendido / Cerrar
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 2: Reprogramming Modal -->
+  <div id="reprogram-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px;">
+          <span class="material-symbols-outlined" style="color: var(--color-primary);">edit_calendar</span> Reprogramar Cita
+        </h3>
+        <button onclick="toggleModal('reprogram-modal')" style="color: var(--color-secondary);"><span class="material-symbols-outlined">close</span></button>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <label style="font-size: 14px; font-weight: 700; color: var(--color-text-dark); display: block; margin-bottom: 8px;">Seleccioná Nueva Fecha</label>
+        <input type="date" id="reprogramDate" value="2026-07-05" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 15px;"/>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <label style="font-size: 14px; font-weight: 700; color: var(--color-text-dark); display: block; margin-bottom: 8px;">Seleccioná Nuevo Horario</label>
+        <div class="time-slot-grid">
+          <button class="time-slot-btn" onclick="selectTimeSlot(this)">08:00 AM</button>
+          <button class="time-slot-btn selected" onclick="selectTimeSlot(this)">09:30 AM</button>
+          <button class="time-slot-btn" onclick="selectTimeSlot(this)">11:00 AM</button>
+          <button class="time-slot-btn" onclick="selectTimeSlot(this)">12:30 PM</button>
+          <button class="time-slot-btn" onclick="selectTimeSlot(this)">02:00 PM</button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="confirmReprogramming()">
+        Confirmar Reprogramación
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let selectedTime = "09:30 AM";
+
+    function toggleModal(id) {
+      document.getElementById(id).classList.toggle('hidden');
+    }
+
+    function showConfirmModal() {
+      toggleModal('confirm-modal');
+    }
+
+    function showReprogramModal() {
+      toggleModal('reprogram-modal');
+    }
+
+    function selectTimeSlot(btn) {
+      document.querySelectorAll('.time-slot-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedTime = btn.innerText;
+    }
+
+    function confirmReprogramming() {
+      const dateVal = document.getElementById('reprogramDate').value;
+      const formattedDate = new Date(dateVal).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      
+      document.getElementById('cardHospitalTime').innerText = formattedDate + ' - ' + selectedTime;
+      document.getElementById('modalTime').innerText = formattedDate + ' - ' + selectedTime;
+      
+      toggleModal('reprogram-modal');
+      alert('¡Tu turno ha sido reprogramado exitosamente!');
+    }
+  </script>
+
+</body>
+</html>

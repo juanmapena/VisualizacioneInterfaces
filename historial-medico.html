@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historial Médico | SangreCerca</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Material Symbols Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Pure CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <style>
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background-color: var(--border-color);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -17px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dash-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="dash-sidebar">
+      <a href="index.html" class="dash-sidebar-logo">SangreCerca<span style="color:var(--color-primary-container);">.</span></a>
+      
+      <div class="dash-user-card">
+        <div class="dash-user-avatar">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
+          <span class="dash-user-badge">A+</span>
+        </div>
+        <div class="dash-user-info">
+          <h4>Sofía Martínez</h4>
+          <p>Donante Voluntaria</p>
+        </div>
+      </div>
+
+      <nav class="dash-nav">
+        <a href="panel-de-control.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">dashboard</span> Panel de Control
+        </a>
+        <a href="mis-turnos.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">calendar_today</span> Mis Turnos
+        </a>
+        <a href="agendar-turno.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">add_circle</span> Agendar Turno
+        </a>
+        <a href="historial-medico.html" class="dash-nav-link active">
+          <span class="material-symbols-outlined">history</span> Historial Médico
+        </a>
+        <a href="panel-de-control-en-recuperacion.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">monitor_heart</span> Recuperación
+        </a>
+        <a href="mi-perfil.html" class="dash-nav-link">
+          <span class="material-symbols-outlined">person</span> Mi Perfil
+        </a>
+      </nav>
+
+      <div class="dash-sidebar-footer">
+        <a href="index.html" class="dash-nav-link" style="color: var(--color-primary);">
+          <span class="material-symbols-outlined">logout</span> Cerrar Sesión
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="dash-main">
+      <!-- Top Header -->
+      <header class="dash-header">
+        <h1 class="dash-header-title">Historial Médico</h1>
+        
+        <div class="dash-header-actions">
+          <div class="dash-factor-pill">
+            <span>Factor A+</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">water_drop</span>
+          </div>
+          <button style="color: var(--color-secondary); position: relative;" title="Notificaciones">
+            <span class="material-symbols-outlined">notifications</span>
+            <span style="position: absolute; top: 0; right: 0; width: 8px; height: 8px; background-color: var(--color-primary); border-radius: 50%;"></span>
+          </button>
+          <div style="width: 1px; height: 24px; background-color: var(--border-light);"></div>
+          <div class="dash-header-user">
+            <span style="font-weight: 700; font-size: 14px; color: var(--color-text-dark);">Sofía Martínez</span>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <div class="dash-content-body">
+        <div style="margin-bottom: 28px;">
+          <h2 style="font-family: var(--font-heading); font-size: 26px; color: var(--color-text-dark); margin-bottom: 6px;">Registro Clínico de Donaciones</h2>
+          <p style="font-size: 15px; color: var(--color-secondary);">Consultá los análisis hemáticos y métricas de tus donaciones voluntarias.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <!-- Left Column: Personal Data & Metrics -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="stock-card" style="padding: 24px;">
+              <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--color-text-dark); margin-bottom: 16px;">Ficha Clínica del Donante</h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: var(--color-secondary);">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                  <span>Grupo y Factor:</span>
+                  <strong style="color: var(--color-primary);">A Positivo (A+)</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                  <span>Hemoglobina promedio:</span>
+                  <strong style="color: var(--color-text-dark);">14.2 g/dL (Óptimo)</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                  <span>Presión Arterial:</span>
+                  <strong style="color: var(--color-text-dark);">120/80 mmHg</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>Serología / Análisis:</span>
+                  <strong style="color: var(--status-good);">Verificado / Apto</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Timeline -->
+          <div class="stock-card" style="padding: 28px;">
+            <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--color-text-dark); margin-bottom: 24px;">Línea de Tiempo de Donaciones</h3>
+            
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <div style="font-size: 12px; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">15 de Mayo, 2024</div>
+                <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-top: 2px;">Hospital de Clínicas</h4>
+                <p style="font-size: 13px; color: var(--color-secondary);">Extracción: 450 ml (Sangre Entera). Estado serológico normal.</p>
+              </div>
+
+              <div class="timeline-item">
+                <div style="font-size: 12px; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">12 de Enero, 2024</div>
+                <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-top: 2px;">Sanatorio Otamendi</h4>
+                <p style="font-size: 13px; color: var(--color-secondary);">Extracción: 450 ml (Sangre Entera). Estado serológico normal.</p>
+              </div>
+
+              <div class="timeline-item">
+                <div style="font-size: 12px; font-weight: 700; color: var(--color-primary); text-transform: uppercase;">03 de Septiembre, 2023</div>
+                <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-top: 2px;">Hospital Italiano</h4>
+                <p style="font-size: 13px; color: var(--color-secondary);">Extracción: 450 ml (Sangre Entera). Primera donación registrada en SangreCerca.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

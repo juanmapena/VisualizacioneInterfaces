@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SangreCerca - Red Nacional de Donación Voluntaria de Sangre</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Material Symbols Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Pure CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo-link">
+        <span class="logo-text">SangreCerca<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Inicio</a></li>
+          <li><a href="#requisitos" class="nav-link">Requisitos</a></li>
+          <li><a href="#campanas" class="nav-link">Campañas</a></li>
+          <li><a href="sobre-nosotros.html" class="nav-link">Sobre Nosotros</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="registro.html" class="btn btn-primary">Reservar Turno</a>
+        <a href="login.html" class="user-profile-btn" title="Iniciar Sesión / Mi Perfil">
+          <span class="material-symbols-outlined">account_circle</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">Tu sangre salva vidas cerca tuyo de forma simple</h1>
+
+          <p class="hero-description">
+            SangreCerca conecta a donantes solidarios con la demanda urgente de hospitales y centros médicos en todo
+            Buenos Aires.
+          </p>
+
+
+          <div class="hero-cta-group">
+            <a href="registro.html" class="btn btn-primary">
+              Agendar turno para donar
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+          <img src="hero_person_transparent.png" alt="Médico Donación SangreCerca" class="hero-image" />
+        </div>
+      </div>
+
+      <!-- Organic Wavy Curve Bottom Divider (Matching Donarg reference) -->
+      <div
+        style="position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; pointer-events: none;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none"
+          style="position: relative; display: block; width: calc(100% + 1.3px); height: 60px;">
+          <path d="M0,0 C300,90 600,-30 1200,50 L1200,120 L0,120 Z" fill="#f3f2ff"></path>
+        </svg>
+      </div>
+    </section>
+
+
+
+    <!-- Pre-Requisites Section -->
+    <section id="requisitos" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+
+          <h2 class="section-title">Requisitos para donar en <span class="title-tag">SangreCerca</span></h2>
+          <p class="section-description">Asegúrate de cumplir con estos puntos fundamentales antes de reservar tu turno.
+          </p>
+        </div>
+
+        <div class="requirements-flow">
+          <!-- Card 1 -->
+          <div class="req-card">
+            <div class="req-icon-box">
+              <span class="material-symbols-outlined">event</span>
+            </div>
+            <h3 class="req-card-title">Edad </h3>
+            <p class="req-card-desc">Jóvenes de 16 y 17 años pueden hacerlo con autorización de sus padres o tutores.
+            </p>
+          </div>
+
+          <!-- Flow Arrow 1 -->
+          <div class="flow-arrow">
+            <svg viewBox="0 0 100 30">
+              <path d="M10,25 Q50,0 90,20" stroke="#ff8a80" stroke-width="2.5" stroke-dasharray="5,4" fill="none" />
+              <polygon points="86,14 96,21 85,26" fill="#ff8a80" />
+            </svg>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="req-card">
+            <div class="req-icon-box">
+              <span class="material-symbols-outlined">fitness_center</span>
+            </div>
+            <h3 class="req-card-title">Peso Mínimo</h3>
+            <p class="req-card-desc">Garantiza una extracción totalmente segura para el volumen corporal del donante.
+            </p>
+          </div>
+
+          <!-- Flow Arrow 2 -->
+          <div class="flow-arrow">
+            <svg viewBox="0 0 100 30">
+              <path d="M10,10 Q50,30 90,10" stroke="#ff8a80" stroke-width="2.5" stroke-dasharray="5,4" fill="none" />
+              <polygon points="86,5 96,11 86,17" fill="#ff8a80" />
+            </svg>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="req-card">
+            <div class="req-icon-box">
+              <span class="material-symbols-outlined">sentiment_satisfied</span>
+            </div>
+            <h3 class="req-card-title">Sentirse Sano</h3>
+            <p class="req-card-desc">Sin síntomas de fiebre, gripe o afecciones respiratorias en los últimos 14 días.
+            </p>
+          </div>
+        </div>
+
+        <div class="requisitos-cta-box">
+          <a href="registro.html" class="btn btn-navy">AGENDAR MI TURNO</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campaigns & Urgent Donation Centers -->
+    <section id="campanas" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Puntos de Donación</span>
+          <h2 class="section-title">Campañas Urgentes Destacadas</h2>
+          <p class="section-description">Conoce las necesidades prioritarias en centros hospitalarios de Buenos Aires.
+          </p>
+        </div>
+
+        <div class="campaigns-grid">
+          <!-- Main Featured Campaign Card -->
+          <article class="campaign-main-card">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop"
+              alt="Hospital de Clínicas" class="campaign-bg-img" />
+            <div class="campaign-overlay"></div>
+            <div class="campaign-content">
+              <span class="campaign-tag">Prioridad Máxima</span>
+              <h3 class="campaign-title">Campaña Hospital de Clínicas</h3>
+              <p class="campaign-desc">Se solicita de manera urgente sangre tipo O- y A- para cirugías complejas
+                programadas durante esta semana. Tu ayuda es decisiva.</p>
+              <a href="registro.html" class="btn btn-primary">Reservar en Hospital de Clínicas</a>
+            </div>
+          </article>
+
+          <!-- Secondary Campaigns Stack -->
+          <div class="campaign-sub-list">
+            <!-- Small Card 1 -->
+            <article class="campaign-sub-card">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=400&auto=format&fit=crop"
+                alt="Hospital Pediátrico" class="sub-card-img" />
+              <div class="sub-card-body">
+                <div>
+                  <h4 class="sub-card-title">Hospital Garrahan</h4>
+                  <p class="sub-card-text">Colecta pediátrica continua para tratamientos oncológicos. Donantes
+                    frecuentes requeridos.</p>
+                </div>
+                <div class="sub-card-meta">
+                  <span style="color: var(--color-primary);">Turnos Disponibles</span>
+                  <a href="registro.html"
+                    style="color: var(--color-primary); text-decoration: none; font-weight: 700;">Agendar
+                    &rarr;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Small Card 2 -->
+            <article class="campaign-sub-card">
+              <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=400&auto=format&fit=crop"
+                alt="San Isidro" class="sub-card-img" />
+              <div class="sub-card-body">
+                <div>
+                  <h4 class="sub-card-title">Sanatorio San Isidro</h4>
+                  <p class="sub-card-text">Jornada especial de extracción sanguínea. Atención rápida con desayuno
+                    incluido.</p>
+                </div>
+                <div class="sub-card-meta">
+                  <span style="color: var(--color-secondary);">Próximo Sábado</span>
+                  <a href="registro.html"
+                    style="color: var(--color-primary); text-decoration: none; font-weight: 700;">Agendar
+                    &rarr;</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Itinerant Collection Drives Schedule (SangreCerca Agenda) -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Colectas Móviles</span>
+          <h2 class="section-title">Próximas Jornadas en Facultades e Instituciones</h2>
+          <p class="section-description">Llevamos el centro de donación más cerca tuyo. Consulta nuestro cronograma
+            móvil.</p>
+        </div>
+
+        <div class="schedule-list">
+          <!-- Item 1 -->
+          <div class="schedule-item">
+            <div class="schedule-date">
+              <div class="date-badge">
+                23 ABR
+              </div>
+              <div class="location-info">
+                <h4>Facultad de Medicina (UBA)</h4>
+                <p><span class="material-symbols-outlined">location_on</span> Paraguay 2155, CABA - Hall Principal</p>
+              </div>
+            </div>
+            <a href="registro.html" class="btn btn-outline" style="padding: 8px 18px; font-size: 14px;">Reservar
+              Lugar</a>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="schedule-item">
+            <div class="schedule-date">
+              <div class="date-badge">
+                24 ABR
+              </div>
+              <div class="location-info">
+                <h4>Clínica Adventista de Belgrano</h4>
+                <p><span class="material-symbols-outlined">location_on</span> Estomba 1710, CABA</p>
+              </div>
+            </div>
+            <a href="registro.html" class="btn btn-outline" style="padding: 8px 18px; font-size: 14px;">Reservar
+              Lugar</a>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="schedule-item">
+            <div class="schedule-date">
+              <div class="date-badge">
+                27 ABR
+              </div>
+              <div class="location-info">
+                <h4>Godspell College</h4>
+                <p><span class="material-symbols-outlined">location_on</span> San Isidro, Provincia de Buenos Aires</p>
+              </div>
+            </div>
+            <a href="registro.html" class="btn btn-outline" style="padding: 8px 18px; font-size: 14px;">Reservar
+              Lugar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Despejá tus dudas</span>
+          <h2 class="section-title">Preguntas Frecuentes</h2>
+          <p class="section-description">Todo lo que necesitas saber antes y después de realizar tu donación.</p>
+        </div>
+
+        <div class="faq-wrapper">
+          <!-- FAQ Item 1 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>¿Cuánto tiempo debo esperar entre donaciones?</span>
+              <span class="material-symbols-outlined arrow-icon">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Los hombres pueden donar hasta 4 veces al año y las mujeres hasta 3 veces al año. Debe haber un
+                intervalo mínimo de 2 meses (60 días) entre cada donación de sangre entera.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>¿Puedo donar si tengo tatuajes o piercings?</span>
+              <span class="material-symbols-outlined arrow-icon">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Sí, podés donar sangre sin inconvenientes una vez transcurridos 12 meses (1 año) desde la realización de
+                tu último tatuaje, piercing o tratamiento de acupuntura.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>¿Debo ir completamente en ayunas?</span>
+              <span class="material-symbols-outlined arrow-icon">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                ¡No! Es recomendable consumir líquidos como té, café, mate (sin leche) y frutas o tostadas sin grasas ni
+                lácteos antes de donar. Evitá alimentos grasos durante las 6 horas previas.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Institutional Partners Section -->
+    <section class="partners-section">
+      <div class="container">
+        <h3 class="partners-title">Confían y colaboran en nuestra red nacional</h3>
+        <div class="partners-grid">
+          <div class="partner-logo-item" title="Hospital de Clínicas">
+            <img src="logo_clinicas.png" alt="Hospital de Clínicas" class="partner-img" />
+          </div>
+          <div class="partner-logo-item" title="Hospital Garrahan">
+            <img src="logo_garrahan.png" alt="Hospital Garrahan" class="partner-img" />
+          </div>
+          <div class="partner-logo-item" title="UBA Medicina">
+            <img src="logo_uba.png" alt="UBA Medicina" class="partner-img" />
+          </div>
+          <div class="partner-logo-item" title="Ministerio de Salud">
+            <img src="logo_ministerio.png" alt="Ministerio de Salud" class="partner-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <span class="footer-logo">SangreCerca</span>
+          <p class="footer-text">
+            Conectando la solidaridad ciudadana con las necesidades urgentes de salud. La red tecnológica nacional de
+            donación voluntaria de sangre en Argentina.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Plataforma</h4>
+          <ul class="footer-links">
+            <li><a href="registro.html" class="footer-link">Reservar Turno</a></li>
+            <li><a href="index.html#campanas" class="footer-link">Campañas Vigentes</a></li>
+            <li><a href="login.html" class="footer-link">Portal de donantes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Información</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#requisitos" class="footer-link">Requisitos para Donar</a></li>
+            <li><a href="sobre-nosotros.html" class="footer-link">Sobre SangreCerca</a></li>
+            <li><a href="contacto.html" class="footer-link">Contacto e Instituciones</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Contacto</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><span class="material-symbols-outlined" style="font-size: 16px;">email</span>
+              info@sangrecerca.org.ar</li>
+            <li class="footer-link"><span class="material-symbols-outlined" style="font-size: 16px;">call</span>
+              0800-SANGRECERCA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SangreCerca - Red Nacional de Donación de Sangre. Todos los derechos reservados.</p>
+        <div class="social-links">
+          <a href="#" class="social-icon" title="Compartir"><span class="material-symbols-outlined">share</span></a>
+          <a href="#" class="social-icon" title="Enviar Mensaje"><span class="material-symbols-outlined">mail</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accordion Toggle JavaScript -->
+  <script>
+    function toggleAccordion(button) {
+      const item = button.parentElement;
+      const isOpen = item.classList.contains('active');
+
+      // Close all items
+      document.querySelectorAll('.accordion-item').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      // Toggle the clicked item if it was closed
+      if (!isOpen) {
+        item.classList.add('active');
+      }
+    }
+
+    // Header scroll background shadow effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+
+</html>
