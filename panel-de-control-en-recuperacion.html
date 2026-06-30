@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estado de Recuperación | SangreCerca</title>
+  <title>Estado de Recuperación | Goti</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,34 +91,89 @@
       font-size: 20px;
       flex-shrink: 0;
     }
+
+    /* Dash Hero Banner with Red Gradient & Oval Bottom */
+    .dash-hero-banner {
+      background: linear-gradient(180deg, #fff5f5 0%, #e53935 100%);
+      margin-top: -80px;
+      padding-top: 150px; /* Separates content from transparent navbar */
+      padding-bottom: 40px;
+      border-bottom-left-radius: 50% 40px;
+      border-bottom-right-radius: 50% 40px;
+      margin-bottom: 30px; /* Pull the alert banner up into the fold */
+      min-height: 80vh; /* Covers down to the fold */
+      box-sizing: border-box;
+    }
+
+    .banner-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* Style Overrides for Text Readability over Light-to-Red Gradient */
+    .dash-hero-banner .calendar-strip {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      backdrop-filter: blur(8px) !important;
+      box-shadow: 0 4px 20px rgba(182, 28, 37, 0.05) !important;
+      margin: 16px 0 0 0;
+    }
+    
+    .dash-hero-banner .ring-widget-card {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin-bottom: 0;
+    }
+
+    .dash-content-body {
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
+
+    #yellowAlertBanner {
+      margin-top: 0;
+      margin-bottom: 120px; /* Pushes the care cards below the fold */
+    }
+
+    @media (max-width: 991px) {
+      .banner-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      .dash-hero-banner {
+        border-bottom-left-radius: 50% 20px;
+        border-bottom-right-radius: 50% 20px;
+        padding-bottom: 32px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- Header / Navigation Bar -->
-  <header class="header">
+  <header class="header" style="background: transparent; border-bottom: none; backdrop-filter: none; box-shadow: none;">
     <div class="container header-container">
       <a href="index.html" class="logo-link">
-        <span class="logo-text">SangreCerca<span class="logo-dot">.</span></span>
+        <span class="logo-text">Got<span class="logo-i">ı</span></span>
       </a>
 
       <nav>
         <ul class="nav-menu dash-nav-menu">
           <li><a href="panel-de-control.html" class="nav-link">Inicio</a></li>
           <li><a href="mis-turnos.html" class="nav-link">Mis Turnos</a></li>
-          <li><a href="#" class="nav-link" onclick="blockedBookingAlert(event)" style="display: flex; align-items: center; gap: 4px;"><span class="material-symbols-outlined" style="font-size: 16px; color: #9e9e9e;">lock</span> Agendar Turno</a></li>
-          <li><a href="historial-medico.html" class="nav-link">Historial Médico</a></li>
+          <li><a href="#" class="nav-link" onclick="blockedBookingAlert(event)" style="display: flex; align-items: center; gap: 4px;"><span class="material-symbols-outlined" style="font-size: 16px; color: #9e9e9e;">lock</span> Agendar</a></li>
+          <li><a href="historial-medico.html" class="nav-link">Ficha Médica</a></li>
           <li><a href="panel-de-control-en-recuperacion.html" class="nav-link active">Recuperación</a></li>
         </ul>
       </nav>
 
       <div class="header-actions dash-header-actions">
-        <div class="dash-factor-pill">
-          <span>Factor A+</span>
-          <span class="material-symbols-outlined" style="font-size: 16px;">water_drop</span>
-        </div>
-
         <button class="user-profile-btn" style="position: relative;" title="Notificaciones">
           <span class="material-symbols-outlined">notifications</span>
           <span
@@ -142,98 +197,135 @@
   <div class="dash-layout">
     <!-- Main Content Canvas -->
     <main class="dash-main">
-      <!-- Content Body -->
-      <div class="dash-content-body container">
-        <!-- Saludo -->
-        <div class="dash-greeting-card">
-          <h1>¡Hola de nuevo, Sofía! 👋</h1>
-          <p>Tu organismo se encuentra en fase de reposo y recuperación tras tu última donación.</p>
-        </div>
-
-        <!-- Calendario Semanal Horizontal -->
-        <div class="calendar-strip">
-          <div class="calendar-day">
-            <span class="calendar-day-letter">V</span>
-            <span class="calendar-day-number">26</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">S</span>
-            <span class="calendar-day-number">27</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">D</span>
-            <span class="calendar-day-number">28</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">L</span>
-            <span class="calendar-day-number">29</span>
-          </div>
-          <div class="calendar-day active">
-            <span class="calendar-day-letter">M</span>
-            <span class="calendar-day-number">30</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">M</span>
-            <span class="calendar-day-number">1</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">J</span>
-            <span class="calendar-day-number">2</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">V</span>
-            <span class="calendar-day-number">3</span>
-          </div>
-          <div class="calendar-day">
-            <span class="calendar-day-letter">S</span>
-            <span class="calendar-day-number">4</span>
-          </div>
-        </div>
-
-        <!-- Anillo de Recuperación Circular -->
-        <div class="ring-widget-card">
-          <h2 class="ring-title-above" style="color: var(--color-secondary);">Cuerpo en Recuperación</h2>
-          <div class="ring-svg-container">
-            <svg width="300" height="300" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
-              <defs>
-                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ffe082" />
-                  <stop offset="100%" stop-color="#ffb74d" />
-                </linearGradient>
-              </defs>
-              <!-- Background track -->
-              <circle cx="150" cy="150" r="130" fill="transparent" stroke="#fff8e1" stroke-width="12" />
-              <!-- Progress track (25% progress) -->
-              <circle class="recovery-ring-path-25" cx="150" cy="150" r="130" fill="transparent" stroke="url(#ringGradient)"
-                stroke-width="16" stroke-linecap="round" />
-              <!-- Glowing Cursor Thumb at visual 3 o'clock (rotated -90deg, so x=150, y=280 in SVG coords) -->
-              <circle cx="150" cy="280" r="10" fill="#ffffff" stroke="#ff9800" stroke-width="4" style="filter: drop-shadow(0 2px 6px rgba(255, 152, 0, 0.6));" />
-            </svg>
-            <div class="ring-text-overlay">
-              <span class="ring-sublabel">Recuperación</span>
-              <span class="ring-value" style="color: #e65100; font-size: 16px;">FALTAN 45 DÍAS</span>
+      
+      <!-- Banner Hero con Gradiente y Forma Ovalada -->
+      <div class="dash-hero-banner">
+        <div class="container banner-grid">
+          <div class="banner-left">
+            <!-- Saludo -->
+            <div class="dash-greeting-card">
+              <h1>¡Hola de nuevo, Sofía! 👋</h1>
+              <p style="color: #ffffff !important;">Tu organismo se encuentra en fase de reposo y recuperación tras tu última donación.</p>
+            </div>
+            <!-- Calendario Semanal Horizontal -->
+            <div class="calendar-strip" style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+              <!-- Mini Month Header -->
+              <span style="font-family: var(--font-heading); font-size: 11px; font-weight: 800; color: var(--color-text-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Junio</span>
+              
+              <!-- Row of Days -->
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 8px;">
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">V</span>
+                  <span class="calendar-day-number">26</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">S</span>
+                  <span class="calendar-day-number">27</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">D</span>
+                  <span class="calendar-day-number">28</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">L</span>
+                  <span class="calendar-day-number">29</span>
+                </div>
+                <div class="calendar-day active">
+                  <span class="calendar-day-letter">M</span>
+                  <span class="calendar-day-number">30</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">M</span>
+                  <span class="calendar-day-number">1</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">J</span>
+                  <span class="calendar-day-number">2</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">V</span>
+                  <span class="calendar-day-number">3</span>
+                </div>
+                <div class="calendar-day">
+                  <span class="calendar-day-letter">S</span>
+                  <span class="calendar-day-number">4</span>
+                </div>
+              </div>
+              
+              <!-- Tiny Divider Line -->
+              <div style="width: 40px; height: 1.5px; background: rgba(0, 0, 0, 0.1); margin: 12px 0 8px 0;"></div>
+              
+              <!-- Recovery Date Info Text -->
+              <div style="color: var(--color-text-dark); font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; letter-spacing: 0.2px;">
+                <span class="material-symbols-outlined" style="font-size: 16px; color: #2e7d32; font-weight: bold;">check_circle</span>
+                Apto para donar nuevamente: <span style="font-weight: 800; color: var(--color-text-dark);">14 de Agosto</span>
+              </div>
             </div>
           </div>
+          
+          <div class="banner-right">
+            <!-- Anillo de Recuperación Circular -->
+            <div class="ring-widget-card">
+              <h2 class="ring-title-above" style="font-size: 22px; margin-bottom: 12px; color: var(--color-text-dark);">Cuerpo en Recuperación</h2>
+              <div class="ring-svg-container" style="width: 220px; height: 220px;">
+                <svg width="220" height="220" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
+                  <defs>
+                    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ffe082" />
+                      <stop offset="100%" stop-color="#ffb74d" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Background track (White Circle for High Contrast) -->
+                  <circle cx="150" cy="150" r="130" fill="#ffffff" stroke="#fff8e1" stroke-width="12" />
+                  <!-- Progress track (25% progress) -->
+                  <circle class="recovery-ring-path-25" cx="150" cy="150" r="130" fill="transparent" stroke="url(#ringGradient)"
+                    stroke-width="16" stroke-linecap="round" />
+                  <!-- Glowing Cursor Thumb -->
+                  <circle cx="150" cy="280" r="10" fill="#ffffff" stroke="#ff9800" stroke-width="4" style="filter: drop-shadow(0 2px 6px rgba(255, 152, 0, 0.6));" />
+                </svg>
+                <div class="ring-text-overlay">
+                  <span class="ring-sublabel" style="color: #ff9800 !important; font-weight: 700; font-size: 11px;">Recuperación</span>
+                  <span class="ring-value" style="color: #e65100; font-size: 16px; font-weight: 800;">FALTAN 45 DÍAS</span>
+                </div>
+              </div>
 
-          <div style="margin-top: 24px; text-align: center;">
-            <p style="font-size: 15px; color: var(--color-secondary); margin-bottom: 16px;">
-              Última extracción: hace 15 días (Hospital Posadas). Tu cuerpo está en proceso de hematopoyesis regenerando glóbulos rojos.
-            </p>
-            <button class="btn btn-outline" onclick="blockedBookingAlert(event)" style="padding: 10px 24px; opacity: 0.6; display: inline-flex; align-items: center; gap: 8px; cursor: not-allowed; margin: 0 auto;">
-              <span class="material-symbols-outlined" style="font-size: 18px;">lock</span> Agendar Turno (Bloqueado)
-            </button>
+              <div style="margin-top: 16px; text-align: center;">
+                <p style="font-size: 14px; color: #ffffff !important; margin-bottom: 12px; font-weight: 600;">
+                  Última extracción: hace 15 días (Hospital Posadas). Tu cuerpo está en proceso de hematopoyesis regenerando glóbulos rojos.
+                </p>
+                <button class="btn btn-outline" onclick="blockedBookingAlert(event)" style="padding: 8px 20px; font-size: 13px; background: #ffffff; border-color: var(--color-primary-container); opacity: 0.8; cursor: not-allowed; display: inline-flex; align-items: center; gap: 8px;">
+                  <span class="material-symbols-outlined" style="font-size: 16px;">lock</span> Agendar Turno (Bloqueado)
+                </button>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Content Body para el resto del contenido (debajo del pliegue) -->
+      <div class="dash-content-body container">
+        <!-- Yellow Alert Banner matching user screenshot exactly -->
+        <div class="yellow-alert-banner" id="yellowAlertBanner" style="margin-top: 0; margin-bottom: 28px;">
+          <div class="yellow-alert-content">
+            <div class="yellow-alert-icon">
+              <span class="material-symbols-outlined">info</span>
+            </div>
+            <span>Tu cuerpo está fabricando nuevos glóbulos rojos. Faltan 45 días para tu próxima misión.</span>
+          </div>
+          <button style="background: none; border: none; cursor: pointer; color: #795548; display: flex; display: flex; align-items: center;" onclick="document.getElementById('yellowAlertBanner').style.display='none'">
+            <span class="material-symbols-outlined">close</span>
+          </button>
         </div>
 
         <!-- 3 Cards matching user screenshot exactly -->
-        <div style="margin-top: 36px;">
+        <div>
           <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); margin-bottom: 8px;">Recomendaciones de Cuidado Diario</h3>
           <p style="font-size: 14px; color: var(--color-secondary);">Seguí estas 3 pautas fundamentales para asegurar una recuperación óptima:</p>
           
           <div class="post-card-grid">
             <!-- Card 1: Hidratación Extra -->
             <div class="post-card">
-              <div class="post-icon-box" style="background-color: #00897b; color: #ffffff;">
+              <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
                 <span class="material-symbols-outlined">water_drop</span>
               </div>
               <div>
@@ -244,7 +336,7 @@
 
             <!-- Card 2: Rico en Hierro -->
             <div class="post-card">
-              <div class="post-icon-box" style="background-color: #e8eaf6; color: #3f51b5;">
+              <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
                 <span class="material-symbols-outlined">restaurant</span>
               </div>
               <div>
@@ -255,7 +347,7 @@
 
             <!-- Card 3: Reposo Deportivo -->
             <div class="post-card">
-              <div class="post-icon-box" style="background-color: #ffebee; color: #c62828;">
+              <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
                 <span class="material-symbols-outlined">fitness_center</span>
               </div>
               <div>
@@ -265,21 +357,58 @@
             </div>
           </div>
         </div>
-
-        <!-- Yellow Alert Banner matching user screenshot exactly -->
-        <div class="yellow-alert-banner" id="yellowAlertBanner">
-          <div class="yellow-alert-content">
-            <div class="yellow-alert-icon">
-              <span class="material-symbols-outlined">info</span>
-            </div>
-            <span>Tu cuerpo está fabricando nuevos glóbulos rojos. Faltan 45 días para tu próxima misión.</span>
-          </div>
-          <button style="background: none; border: none; cursor: pointer; color: #795548; display: flex; align-items: center;" onclick="document.getElementById('yellowAlertBanner').style.display='none'">
-            <span class="material-symbols-outlined">close</span>
-          </button>
-        </div>
-
       </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand-col">
+              <span class="footer-logo">Got<span class="logo-i">ı</span></span>
+              <p class="footer-text">
+                Conectando la solidaridad ciudadana con las necesidades urgentes de salud. La red tecnológica nacional de
+                donación voluntaria de sangre en Argentina.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="footer-col-title">Plataforma</h4>
+              <ul class="footer-links">
+                <li><a href="panel-de-control.html" class="footer-link">Inicio</a></li>
+                <li><a href="mis-turnos.html" class="footer-link">Mis Turnos</a></li>
+                <li><a href="agendar-turno.html" class="footer-link">Agendar Turno</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="footer-col-title">Información</h4>
+              <ul class="footer-links">
+                <li><a href="historial-medico.html" class="footer-link">Ficha Médica</a></li>
+                <li><a href="mi-perfil.html" class="footer-link">Mi Perfil</a></li>
+                <li><a href="panel-de-control-en-recuperacion.html" class="footer-link">Estado de Recuperación</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="footer-col-title">Contacto</h4>
+              <ul class="footer-links">
+                <li class="footer-link"><span class="material-symbols-outlined" style="font-size: 16px;">email</span>
+                  info@goti.org.ar</li>
+                <li class="footer-link"><span class="material-symbols-outlined" style="font-size: 16px;">call</span>
+                  0800-GOTI</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>&copy; 2026 Goti - Red Nacional de Donación de Sangre. Todos los derechos reservados.</p>
+            <div class="social-links">
+              <a href="#" class="social-icon" title="Compartir"><span class="material-symbols-outlined">share</span></a>
+              <a href="#" class="social-icon" title="Enviar Mensaje"><span class="material-symbols-outlined">mail</span></a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   </div>
 
