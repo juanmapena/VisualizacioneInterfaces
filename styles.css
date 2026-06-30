@@ -1338,11 +1338,48 @@ img {
 }
 
 .dash-main {
-  margin-left: 280px;
-  width: calc(100% - 280px);
+  margin-left: 0;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding-top: var(--header-height);
+}
+
+.dash-nav-menu {
+  gap: 20px !important;
+}
+
+.dash-page-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+  .dash-header-actions .dash-header-user span {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .dash-nav-menu {
+    gap: 12px !important;
+  }
+  .dash-header-actions .logout-text {
+    display: none;
+  }
+  .dash-header-actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dash-header-actions .dash-factor-pill {
+    display: none;
+  }
 }
 
 .dash-header {
@@ -1541,3 +1578,177 @@ img {
 }
 
 
+/* ==========================================================================
+   Dashboard Greeting and Cycle Ring Custom Widgets
+   ========================================================================== */
+.dash-greeting-card {
+  margin-bottom: 24px;
+}
+
+.dash-greeting-card h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--color-text-dark);
+  margin-bottom: 6px;
+}
+
+.dash-greeting-card p {
+  font-size: 16px;
+  color: var(--color-secondary);
+}
+
+/* Horizontal Calendar Strip */
+.calendar-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0;
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.calendar-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+  min-width: 44px;
+}
+
+.calendar-day-letter {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.calendar-day-number {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition-fast);
+}
+
+/* Active Day Pill (Dark Capsule) */
+.calendar-day.active {
+  background-color: var(--color-text-dark);
+  border-radius: 28px;
+  padding: 14px 0;
+  box-shadow: 0 4px 14px rgba(23, 27, 43, 0.25);
+  transform: scale(1.05);
+}
+
+.calendar-day.active .calendar-day-letter {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.calendar-day.active .calendar-day-number {
+  background-color: #ffb3b7;
+  color: #930014;
+  font-weight: 800;
+}
+
+/* Calendar Event Indicator Dots */
+.calendar-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.calendar-dot.faint {
+  background-color: var(--color-primary-light);
+  opacity: 0.5;
+}
+
+/* Circular Recovery Ring Card Container */
+.ring-widget-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  padding: 44px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.ring-title-above {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-secondary);
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.recovery-ring-path {
+  stroke-dasharray: 817;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.recovery-ring-path-25 {
+  stroke-dasharray: 817;
+  stroke-dashoffset: 613;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.ring-svg-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.ring-text-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.ring-sublabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.ring-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}

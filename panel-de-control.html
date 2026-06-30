@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panel de Control | SangreCerca</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
   <!-- Material Symbols Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
 
   <!-- Pure CSS Stylesheet -->
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css" />
 
   <style>
     /* Google Maps Exact Replica Container */
@@ -36,7 +40,7 @@
       position: absolute;
       inset: 0;
       background-color: #e8ecef;
-      background-image: 
+      background-image:
         linear-gradient(rgba(200, 210, 220, 0.4) 1px, transparent 1px),
         linear-gradient(90deg, rgba(200, 210, 220, 0.4) 1px, transparent 1px),
         linear-gradient(rgba(180, 200, 220, 0.6) 2px, transparent 2px),
@@ -61,8 +65,9 @@
       position: absolute;
       background: #ffffff;
       border: 1px solid #b0bec5;
-      box-shadow: 0 0 2px rgba(0,0,0,0.1);
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     }
+
     .road-general-paz {
       top: 0;
       left: 15%;
@@ -72,6 +77,7 @@
       background: #ffd54f;
       border-color: #ffb300;
     }
+
     .road-lugones {
       top: 5%;
       right: 25%;
@@ -100,14 +106,16 @@
       cursor: pointer;
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .blood-character-pin:hover {
       transform: translate(-50%, -115%) scale(1.25);
       z-index: 30;
     }
+
     .blood-character-pin svg {
       width: 42px;
       height: 52px;
-      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
     }
 
     /* Controls UI */
@@ -118,10 +126,11 @@
       z-index: 40;
       background: #ffffff;
       border-radius: 3px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
       display: flex;
       overflow: hidden;
     }
+
     .gmaps-switch-btn {
       padding: 8px 16px;
       font-size: 14px;
@@ -131,6 +140,7 @@
       color: #111;
       cursor: pointer;
     }
+
     .gmaps-switch-btn.inactive {
       font-weight: 400;
       color: #565656;
@@ -147,24 +157,26 @@
       gap: 12px;
       align-items: center;
     }
+
     .gmaps-icon-card {
       background: #ffffff;
       width: 40px;
       height: 40px;
       border-radius: 2px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       color: #666;
     }
+
     .gmaps-pegman {
       width: 40px;
       height: 40px;
       background: #ffffff;
       border-radius: 2px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -181,6 +193,7 @@
       color: #5f6368;
       letter-spacing: -0.8px;
     }
+
     .gmaps-footer-terms {
       position: absolute;
       bottom: 6px;
@@ -188,7 +201,7 @@
       z-index: 40;
       font-size: 10px;
       color: #444;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255, 255, 255, 0.7);
       padding: 2px 8px;
       border-radius: 2px;
       display: flex;
@@ -200,16 +213,19 @@
       stroke-dashoffset: 0;
       transition: stroke-dashoffset 1s ease-in-out;
     }
+
     .dash-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
     }
+
     @media (min-width: 992px) {
       .dash-grid {
         grid-template-columns: 1.3fr 0.7fr;
       }
     }
+
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -218,360 +234,470 @@
     }
   </style>
 </head>
+
 <body>
 
-  <div class="dash-layout">
-    <!-- Sidebar Navigation -->
-    <aside class="dash-sidebar">
-      <a href="index.html" class="dash-sidebar-logo">SangreCerca<span style="color:var(--color-primary-container);">.</span></a>
-      
-      <div class="dash-user-card">
-        <div class="dash-user-avatar">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
-          <span class="dash-user-badge">A+</span>
-        </div>
-        <div class="dash-user-info">
-          <h4>Sofía Martínez</h4>
-          <p>Donante Voluntaria</p>
-        </div>
-      </div>
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo-link">
+        <span class="logo-text">SangreCerca<span class="logo-dot">.</span></span>
+      </a>
 
-      <nav class="dash-nav">
-        <a href="panel-de-control.html" class="dash-nav-link active">
-          <span class="material-symbols-outlined">dashboard</span> Panel de Control
-        </a>
-        <a href="mis-turnos.html" class="dash-nav-link">
-          <span class="material-symbols-outlined">calendar_today</span> Mis Turnos
-        </a>
-        <a href="agendar-turno.html" class="dash-nav-link">
-          <span class="material-symbols-outlined">add_circle</span> Agendar Turno
-        </a>
-        <a href="historial-medico.html" class="dash-nav-link">
-          <span class="material-symbols-outlined">history</span> Historial Médico
-        </a>
-        <a href="panel-de-control-en-recuperacion.html" class="dash-nav-link">
-          <span class="material-symbols-outlined">monitor_heart</span> Recuperación
-        </a>
-        <a href="mi-perfil.html" class="dash-nav-link">
-          <span class="material-symbols-outlined">person</span> Mi Perfil
-        </a>
+      <nav>
+        <ul class="nav-menu dash-nav-menu">
+          <li><a href="panel-de-control.html" class="nav-link active">Inicio</a></li>
+          <li><a href="mis-turnos.html" class="nav-link">Mis Turnos</a></li>
+          <li><a href="agendar-turno.html" class="nav-link">Agendar Turno</a></li>
+          <li><a href="historial-medico.html" class="nav-link">Historial Médico</a></li>
+          <li><a href="panel-de-control-en-recuperacion.html" class="nav-link">Recuperación</a></li>
+        </ul>
       </nav>
 
-      <div class="dash-sidebar-footer">
-        <a href="index.html" class="dash-nav-link" style="color: var(--color-primary);">
-          <span class="material-symbols-outlined">logout</span> Cerrar Sesión
+      <div class="header-actions dash-header-actions">
+        <div class="dash-factor-pill">
+          <span>Factor A+</span>
+          <span class="material-symbols-outlined" style="font-size: 16px;">water_drop</span>
+        </div>
+
+        <button class="user-profile-btn" style="position: relative;" title="Notificaciones">
+          <span class="material-symbols-outlined">notifications</span>
+          <span
+            style="position: absolute; top: 12px; right: 12px; width: 8px; height: 8px; background-color: var(--color-primary); border-radius: 50%;"></span>
+        </button>
+
+        <a href="mi-perfil.html" class="user-profile-btn" title="Mi Perfil"
+          style="padding: 0; overflow: hidden; border: 2px solid var(--color-primary);">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop"
+            alt="Sofía Martínez" style="width: 100%; height: 100%; object-fit: cover;" />
+        </a>
+
+        <a href="index.html" class="user-profile-btn"
+          style="color: var(--color-primary); background-color: var(--color-primary-light);" title="Cerrar Sesión">
+          <span class="material-symbols-outlined">logout</span>
         </a>
       </div>
-    </aside>
+    </div>
+  </header>
 
+  <div class="dash-layout">
     <!-- Main Content Canvas -->
     <main class="dash-main">
-      <!-- Top Header -->
-      <header class="dash-header">
-        <h1 class="dash-header-title">Panel de Control</h1>
-        
-        <div class="dash-header-actions">
-          <div class="dash-factor-pill">
-            <span>Factor A+</span>
-            <span class="material-symbols-outlined" style="font-size: 16px;">water_drop</span>
-          </div>
-          <button style="color: var(--color-secondary); position: relative;" title="Notificaciones">
-            <span class="material-symbols-outlined">notifications</span>
-            <span style="position: absolute; top: 0; right: 0; width: 8px; height: 8px; background-color: var(--color-primary); border-radius: 50%;"></span>
-          </button>
-          <div style="width: 1px; height: 24px; background-color: var(--border-light);"></div>
-          <div class="dash-header-user">
-            <span style="font-weight: 700; font-size: 14px; color: var(--color-text-dark);">Sofía Martínez</span>
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
-          </div>
-        </div>
-      </header>
-
       <!-- Content Body -->
-      <div class="dash-content-body">
-        <div class="dash-grid">
-          <!-- Left Google Maps Replica Widget -->
-          <div class="gmaps-exact-container">
-            <div class="map-canvas">
-              <!-- Water Body -->
-              <div class="map-water"></div>
+      <div class="dash-content-body container">
+        <!-- Saludo -->
+        <div class="dash-greeting-card">
+          <h1>¡Hola de nuevo, Sofía! 👋</h1>
+          <p>Tu cuerpo está en óptimas condiciones para donar hoy.</p>
+        </div>
 
-              <!-- Major Road Avenues -->
-              <div class="road-general-paz"></div>
-              <div class="road-lugones"></div>
-
-              <!-- Neighborhood Labels matching screenshot -->
-              <div class="map-label" style="top: 15%; left: 42%;">BELGRANO</div>
-              <div class="map-label" style="top: 22%; left: 22%;">VILLA URQUIZA</div>
-              <div class="map-label" style="top: 26%; left: 58%;">PALERMO</div>
-              <div class="map-label" style="top: 38%; left: 44%;">CHACARITA</div>
-              <div class="map-label" style="top: 44%; left: 48%;">VILLA CRESPO</div>
-              <div class="map-label" style="top: 42%; left: 76%;">RECOLETA</div>
-              <div class="map-label" style="top: 50%; left: 16%;">VILLA DEVOTO</div>
-              <div class="map-label" style="top: 60%; left: 52%;">CABALLITO</div>
-              <div class="map-label" style="top: 58%; left: 68%;">ALMAGRO</div>
-              <div class="map-label" style="top: 66%; left: 78%;">RETIRO</div>
-              <div class="map-label" style="top: 68%; left: 80%;">CONSTITUCION</div>
-              <div class="map-label" style="top: 76%; left: 42%;">FLORES</div>
-              <div class="map-label" style="top: 76%; left: 74%;">PARQUE PATRICIOS</div>
-              <div class="map-label" style="top: 84%; left: 12%;">LINIERS</div>
-              <div class="map-label" style="top: 88%; left: 32%;">PARQUE AVELLANEDA</div>
-              <div class="map-label" style="top: 90%; left: 60%;">NUEVA POMPEYA</div>
-            </div>
-
-            <!-- Top-Left Switch Controls -->
-            <div class="gmaps-top-switch">
-              <button class="gmaps-switch-btn">Mapa</button>
-              <button class="gmaps-switch-btn inactive">Satélite</button>
-            </div>
-
-            <!-- Right Controls -->
-            <div class="gmaps-right-controls">
-              <div class="gmaps-icon-card" title="Pantalla completa">
-                <span class="material-symbols-outlined">fullscreen</span>
-              </div>
-              <div class="gmaps-pegman" title="Street View">
-                <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
-                  <path d="M12 2C13.66 2 15 3.34 15 5C15 6.66 13.66 8 12 8C10.34 8 9 6.66 9 5C9 3.34 10.34 2 12 2ZM12 9C14.76 9 17.5 10.1 17.5 12.5V19.5H14.5V26H9.5V19.5H6.5V12.5C6.5 10.1 9.24 9 12 9Z" fill="#F4B400"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Footer Google Brand & Terms -->
-            <div class="gmaps-footer-brand">Google</div>
-            <div class="gmaps-footer-terms">
-              <span>Datos del mapa ©2026 Google</span>
-              <span>Términos</span>
-              <span>Notificar un problema de Maps</span>
-            </div>
-
-            <!-- BLOOD DROP CHARACTERS PINS (Matching Screenshot positions & styles) -->
-            
-            <!-- 1. Belgrano Red Happy Drop -->
-            <div class="blood-character-pin" style="top: 20%; left: 44%;" onclick="alert('Belgrano: Hospital Pirovano - Stock Normal')">
-              <svg viewBox="0 0 100 120">
-                <!-- Legs -->
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <!-- Body -->
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <!-- Eyes & Smile -->
-                <circle cx="40" cy="65" r="4" fill="#111"/>
-                <circle cx="60" cy="65" r="4" fill="#111"/>
-                <path d="M42 75 Q50 82 58 75" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <!-- 2. Palermo Red Happy Waving Drop -->
-            <div class="blood-character-pin" style="top: 22%; left: 62%;" onclick="alert('Palermo: Sanatorio Güemes - Stock A+ Urgente')">
-              <svg viewBox="0 0 100 120">
-                <!-- Arms waving -->
-                <path d="M20 65 Q10 50 15 40" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
-                <path d="M80 65 Q90 50 85 40" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
-                <!-- Legs -->
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <!-- Body -->
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <!-- Face -->
-                <circle cx="40" cy="62" r="4" fill="#111"/>
-                <circle cx="60" cy="62" r="4" fill="#111"/>
-                <path d="M40 72 Q50 82 60 72" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <!-- 3. Chacarita Grey/Red Urgent Drop -->
-            <div class="blood-character-pin" style="top: 36%; left: 54%;" onclick="alert('Chacarita: Hospital Tornú - Alerta Crítica')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <!-- Dual Body: Grey top, Red bottom -->
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111" stroke-width="4"/>
-                <!-- Serious Eyes -->
-                <line x1="36" y1="58" x2="46" y2="60" stroke="#fff" stroke-width="3"/>
-                <line x1="64" y1="58" x2="54" y2="60" stroke="#fff" stroke-width="3"/>
-              </svg>
-            </div>
-
-            <!-- 4. Recoleta Cluster (Grey & Red Drop) -->
-            <div class="blood-character-pin" style="top: 36%; left: 78%;" onclick="alert('Recoleta: Hospital de Clínicas - Necesidad A+')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <circle cx="40" cy="62" r="4" fill="#111"/>
-                <circle cx="60" cy="62" r="4" fill="#111"/>
-              </svg>
-            </div>
-
-            <!-- 5. Villa Devoto Grey/Red Drop -->
-            <div class="blood-character-pin" style="top: 50%; left: 24%;" onclick="alert('Villa Devoto: Zubizarreta - Stock Moderado')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111" stroke-width="4"/>
-              </svg>
-            </div>
-
-            <!-- 6. Almagro Sad White Drop -->
-            <div class="blood-character-pin" style="top: 54%; left: 81%;" onclick="alert('Almagro: Hospital Italiano - Faltante de Donantes')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <!-- White Sad Body -->
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#ffffff" stroke="#111" stroke-width="4"/>
-                <!-- Sad Face & Tear -->
-                <path d="M36 60 Q40 55 44 60" fill="none" stroke="#111" stroke-width="3"/>
-                <path d="M56 60 Q60 55 64 60" fill="none" stroke="#111" stroke-width="3"/>
-                <path d="M42 76 Q50 68 58 76" fill="none" stroke="#111" stroke-width="3"/>
-                <!-- Tear drop -->
-                <path d="M68 64 C68 64, 64 70, 68 74 C72 74, 72 70, 68 64 Z" fill="#29b6f6"/>
-              </svg>
-            </div>
-
-            <!-- 7. Caballito Multi-Drop Cluster -->
-            <div class="blood-character-pin" style="top: 60%; left: 61%;" onclick="alert('Caballito: Hospital Durand - Urgencia General')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <circle cx="40" cy="62" r="4" fill="#111"/>
-                <circle cx="60" cy="62" r="4" fill="#111"/>
-                <path d="M42 74 Q50 82 58 74" fill="none" stroke="#111" stroke-width="3"/>
-              </svg>
-            </div>
-
-            <!-- 8. Flores White Drop -->
-            <div class="blood-character-pin" style="top: 70%; left: 44%;" onclick="alert('Flores: Hospital Álvarez')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#ffffff" stroke="#111" stroke-width="4"/>
-                <path d="M42 76 Q50 68 58 76" fill="none" stroke="#111" stroke-width="3"/>
-              </svg>
-            </div>
-
-            <!-- 9. Parque Patricios Grey/Red Drop -->
-            <div class="blood-character-pin" style="top: 74%; left: 85%;" onclick="alert('Parque Patricios: Hospital Penna')">
-              <svg viewBox="0 0 100 120">
-                <rect x="38" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <rect x="56" y="85" width="6" height="20" rx="3" fill="#111"/>
-                <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111"/>
-                <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111"/>
-                <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z" fill="#e53935" stroke="#111" stroke-width="4"/>
-                <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111" stroke-width="4"/>
-              </svg>
-            </div>
-
+        <!-- Calendario Semanal Horizontal -->
+        <div class="calendar-strip">
+          <div class="calendar-day">
+            <span class="calendar-day-letter">V</span>
+            <span class="calendar-day-number">26</span>
           </div>
-
-          <!-- Right Status / Readiness Card -->
-          <div class="stock-card" style="padding: 32px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div style="position: relative; width: 160px; height: 160px; margin-bottom: 24px;">
-              <svg style="width: 100%; height: 100%; transform: rotate(-90deg);">
-                <circle cx="80" cy="80" r="70" fill="transparent" stroke="var(--bg-surface-alt)" stroke-width="12"></circle>
-                <circle class="health-ring-path" cx="80" cy="80" r="70" fill="transparent" stroke="var(--status-good)" stroke-width="12" stroke-dasharray="440" stroke-dashoffset="0" stroke-linecap="round"></circle>
-              </svg>
-              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 36px; color: var(--status-good);">check_circle</span>
-                <span style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--color-text-dark);">100%</span>
-              </div>
-            </div>
-
-            <h3 style="font-family: var(--font-heading); font-size: 22px; color: var(--color-text-dark); margin-bottom: 8px;">¡Cuerpo Listo para Donar!</h3>
-            <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 24px;">Han transcurrido más de 60 días desde tu última donación. Tu estado de salud es óptimo.</p>
-            
-            <a href="historial-medico.html" class="btn btn-outline" style="width: 100%; justify-content: center;">Ver Historial Médico</a>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">S</span>
+            <span class="calendar-day-number">27</span>
+          </div>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">D</span>
+            <span class="calendar-day-number">28</span>
+          </div>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">L</span>
+            <span class="calendar-day-number">29</span>
+          </div>
+          <div class="calendar-day active">
+            <span class="calendar-day-letter">M</span>
+            <span class="calendar-day-number">30</span>
+          </div>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">M</span>
+            <span class="calendar-day-number">1</span>
+          </div>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">J</span>
+            <span class="calendar-day-number">2</span>
+          </div>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">V</span>
+            <span class="calendar-day-number">3</span>
+          </div>
+          <div class="calendar-day">
+            <span class="calendar-day-letter">S</span>
+            <span class="calendar-day-number">4</span>
           </div>
         </div>
+
+        <!-- Anillo de Recuperación Circular -->
+        <div class="ring-widget-card">
+          <h2 class="ring-title-above">Cuerpo Listo</h2>
+          <div class="ring-svg-container">
+            <svg width="300" height="300" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
+              <defs>
+                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#a5d6a7" />
+                  <stop offset="100%" stop-color="#388e3c" />
+                </linearGradient>
+              </defs>
+              <!-- Background track -->
+              <circle cx="150" cy="150" r="130" fill="transparent" stroke="#e8f5e9" stroke-width="12" />
+              <!-- Progress track (Full 100% circle) -->
+              <circle class="recovery-ring-path" cx="150" cy="150" r="130" fill="transparent" stroke="url(#ringGradient)"
+                stroke-width="16" stroke-linecap="round" />
+              <!-- Glowing Cursor Thumb at visual top (rotated -90deg, so x=280, y=150 in SVG coords) -->
+              <circle cx="280" cy="150" r="10" fill="#ffffff" stroke="#388e3c" stroke-width="4" style="filter: drop-shadow(0 2px 6px rgba(56, 142, 60, 0.6));" />
+            </svg>
+            <div class="ring-text-overlay">
+              <span class="ring-sublabel">Recuperación</span>
+              <span class="ring-value" style="color: #2e7d32;">60 DÍAS COMPLETADOS</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; text-align: center;">
+            <p style="font-size: 15px; color: var(--color-secondary); margin-bottom: 16px;">
+              Tu estado de salud es óptimo. Ha pasado el período obligatorio desde tu última extracción.
+            </p>
+            <a href="historial-medico.html" class="btn btn-outline" style="padding: 10px 24px;">Ver Ficha Médica</a>
+          </div>
+        </div>
+
+        <!-- Título para el Mapa de Emergencias -->
+        <div style="margin-bottom: 20px; margin-top: 20px;">
+          <h2
+            style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px;">
+            <span class="material-symbols-outlined" style="color: var(--color-primary);"></span> Mapa de Hospitales y
+            Urgencias Cercanas
+          </h2>
+          <p style="font-size: 14px; color: var(--color-secondary);">Hacé clic en los marcadores de gotas de sangre para
+            ver las necesidades de stock de cada hospital.</p>
+        </div>
+        <!-- Left Google Maps Replica Widget -->
+        <div class="gmaps-exact-container">
+          <div class="map-canvas">
+            <!-- Water Body -->
+            <div class="map-water"></div>
+
+            <!-- Major Road Avenues -->
+            <div class="road-general-paz"></div>
+            <div class="road-lugones"></div>
+
+            <!-- Neighborhood Labels matching screenshot -->
+            <div class="map-label" style="top: 15%; left: 42%;">BELGRANO</div>
+            <div class="map-label" style="top: 22%; left: 22%;">VILLA URQUIZA</div>
+            <div class="map-label" style="top: 26%; left: 58%;">PALERMO</div>
+            <div class="map-label" style="top: 38%; left: 44%;">CHACARITA</div>
+            <div class="map-label" style="top: 44%; left: 48%;">VILLA CRESPO</div>
+            <div class="map-label" style="top: 42%; left: 76%;">RECOLETA</div>
+            <div class="map-label" style="top: 50%; left: 16%;">VILLA DEVOTO</div>
+            <div class="map-label" style="top: 60%; left: 52%;">CABALLITO</div>
+            <div class="map-label" style="top: 58%; left: 68%;">ALMAGRO</div>
+            <div class="map-label" style="top: 66%; left: 78%;">RETIRO</div>
+            <div class="map-label" style="top: 68%; left: 80%;">CONSTITUCION</div>
+            <div class="map-label" style="top: 76%; left: 42%;">FLORES</div>
+            <div class="map-label" style="top: 76%; left: 74%;">PARQUE PATRICIOS</div>
+            <div class="map-label" style="top: 84%; left: 12%;">LINIERS</div>
+            <div class="map-label" style="top: 88%; left: 32%;">PARQUE AVELLANEDA</div>
+            <div class="map-label" style="top: 90%; left: 60%;">NUEVA POMPEYA</div>
+          </div>
+
+          <!-- Top-Left Switch Controls -->
+          <div class="gmaps-top-switch">
+            <button class="gmaps-switch-btn">Mapa</button>
+            <button class="gmaps-switch-btn inactive">Satélite</button>
+          </div>
+
+          <!-- Right Controls -->
+          <div class="gmaps-right-controls">
+            <div class="gmaps-icon-card" title="Pantalla completa">
+              <span class="material-symbols-outlined">fullscreen</span>
+            </div>
+            <div class="gmaps-pegman" title="Street View">
+              <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
+                <path
+                  d="M12 2C13.66 2 15 3.34 15 5C15 6.66 13.66 8 12 8C10.34 8 9 6.66 9 5C9 3.34 10.34 2 12 2ZM12 9C14.76 9 17.5 10.1 17.5 12.5V19.5H14.5V26H9.5V19.5H6.5V12.5C6.5 10.1 9.24 9 12 9Z"
+                  fill="#F4B400" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Footer Google Brand & Terms -->
+          <div class="gmaps-footer-brand">Google</div>
+          <div class="gmaps-footer-terms">
+            <span>Datos del mapa ©2026 Google</span>
+            <span>Términos</span>
+            <span>Notificar un problema de Maps</span>
+          </div>
+
+          <!-- BLOOD DROP CHARACTERS PINS (Matching Screenshot positions & styles) -->
+
+          <!-- 1. Belgrano Red Happy Drop -->
+          <div class="blood-character-pin" style="top: 20%; left: 44%;"
+            onclick="alert('Belgrano: Hospital Pirovano - Stock Normal')">
+            <svg viewBox="0 0 100 120">
+              <!-- Legs -->
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <!-- Body -->
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <!-- Eyes & Smile -->
+              <circle cx="40" cy="65" r="4" fill="#111" />
+              <circle cx="60" cy="65" r="4" fill="#111" />
+              <path d="M42 75 Q50 82 58 75" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" />
+            </svg>
+          </div>
+
+          <!-- 2. Palermo Red Happy Waving Drop -->
+          <div class="blood-character-pin" style="top: 22%; left: 62%;"
+            onclick="alert('Palermo: Sanatorio Güemes - Stock A+ Urgente')">
+            <svg viewBox="0 0 100 120">
+              <!-- Arms waving -->
+              <path d="M20 65 Q10 50 15 40" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" />
+              <path d="M80 65 Q90 50 85 40" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" />
+              <!-- Legs -->
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <!-- Body -->
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <!-- Face -->
+              <circle cx="40" cy="62" r="4" fill="#111" />
+              <circle cx="60" cy="62" r="4" fill="#111" />
+              <path d="M40 72 Q50 82 60 72" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" />
+            </svg>
+          </div>
+
+          <!-- 3. Chacarita Grey/Red Urgent Drop -->
+          <div class="blood-character-pin" style="top: 36%; left: 54%;"
+            onclick="alert('Chacarita: Hospital Tornú - Alerta Crítica')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <!-- Dual Body: Grey top, Red bottom -->
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111"
+                stroke-width="4" />
+              <!-- Serious Eyes -->
+              <line x1="36" y1="58" x2="46" y2="60" stroke="#fff" stroke-width="3" />
+              <line x1="64" y1="58" x2="54" y2="60" stroke="#fff" stroke-width="3" />
+            </svg>
+          </div>
+
+          <!-- 4. Recoleta Cluster (Grey & Red Drop) -->
+          <div class="blood-character-pin" style="top: 36%; left: 78%;"
+            onclick="alert('Recoleta: Hospital de Clínicas - Necesidad A+')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <circle cx="40" cy="62" r="4" fill="#111" />
+              <circle cx="60" cy="62" r="4" fill="#111" />
+            </svg>
+          </div>
+
+          <!-- 5. Villa Devoto Grey/Red Drop -->
+          <div class="blood-character-pin" style="top: 50%; left: 24%;"
+            onclick="alert('Villa Devoto: Zubizarreta - Stock Moderado')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111"
+                stroke-width="4" />
+            </svg>
+          </div>
+
+          <!-- 6. Almagro Sad White Drop -->
+          <div class="blood-character-pin" style="top: 54%; left: 81%;"
+            onclick="alert('Almagro: Hospital Italiano - Faltante de Donantes')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <!-- White Sad Body -->
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#ffffff" stroke="#111" stroke-width="4" />
+              <!-- Sad Face & Tear -->
+              <path d="M36 60 Q40 55 44 60" fill="none" stroke="#111" stroke-width="3" />
+              <path d="M56 60 Q60 55 64 60" fill="none" stroke="#111" stroke-width="3" />
+              <path d="M42 76 Q50 68 58 76" fill="none" stroke="#111" stroke-width="3" />
+              <!-- Tear drop -->
+              <path d="M68 64 C68 64, 64 70, 68 74 C72 74, 72 70, 68 64 Z" fill="#29b6f6" />
+            </svg>
+          </div>
+
+          <!-- 7. Caballito Multi-Drop Cluster -->
+          <div class="blood-character-pin" style="top: 60%; left: 61%;"
+            onclick="alert('Caballito: Hospital Durand - Urgencia General')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <circle cx="40" cy="62" r="4" fill="#111" />
+              <circle cx="60" cy="62" r="4" fill="#111" />
+              <path d="M42 74 Q50 82 58 74" fill="none" stroke="#111" stroke-width="3" />
+            </svg>
+          </div>
+
+          <!-- 8. Flores White Drop -->
+          <div class="blood-character-pin" style="top: 70%; left: 44%;" onclick="alert('Flores: Hospital Álvarez')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#ffffff" stroke="#111" stroke-width="4" />
+              <path d="M42 76 Q50 68 58 76" fill="none" stroke="#111" stroke-width="3" />
+            </svg>
+          </div>
+
+          <!-- 9. Parque Patricios Grey/Red Drop -->
+          <div class="blood-character-pin" style="top: 74%; left: 85%;"
+            onclick="alert('Parque Patricios: Hospital Penna')">
+            <svg viewBox="0 0 100 120">
+              <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
+              <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
+              <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
+              <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
+              <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
+                fill="#e53935" stroke="#111" stroke-width="4" />
+              <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111"
+                stroke-width="4" />
+            </svg>
+          </div>
+
+        </div>
+
 
         <!-- Hospitals Available According to Blood Type Section -->
         <div style="margin-top: 48px;">
-          <div style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div
+            style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
             <div>
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                 <span class="material-symbols-outlined" style="color: #e53935;">local_hospital</span>
-                <span style="font-size: 13px; font-weight: 700; color: #e53935; text-transform: uppercase; letter-spacing: 1px;">Red de Hospitales Habilitados</span>
+                <span
+                  style="font-size: 13px; font-weight: 700; color: #e53935; text-transform: uppercase; letter-spacing: 1px;">Red
+                  de Hospitales Habilitados</span>
               </div>
-              <h2 style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--color-text-dark); margin: 0;">
-                Según tu tipo de sangre <span style="background: #ffebee; color: #e53935; padding: 2px 10px; border-radius: 8px;">(A+)</span> tienes disponibles todos estos hospitales:
+              <h2
+                style="font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--color-text-dark); margin: 0;">
+                Según tu tipo de sangre <span
+                  style="background: #ffebee; color: #e53935; padding: 2px 10px; border-radius: 8px;">(A+)</span> tienes
+                disponibles todos estos hospitales:
               </h2>
             </div>
-            <a href="agendar-turno.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Ver Todos los Centros</a>
+            <a href="agendar-turno.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Ver Todos
+              los Centros</a>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
             <!-- Hospital 1 -->
-            <div class="stock-card" style="padding: 0; overflow: hidden; border-radius: 20px; background: #ffffff; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div class="stock-card"
+              style="padding: 0; overflow: hidden; border-radius: 20px; background: #ffffff; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
               <div style="position: relative; height: 180px; overflow: hidden;">
-                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=600&auto=format&fit=crop" alt="Hospital de Clínicas" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"/>
+                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=600&auto=format&fit=crop"
+                  alt="Hospital de Clínicas"
+                  style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
               </div>
               <div style="padding: 24px;">
-                <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">Hospital de Clínicas José de San Martín</h3>
-                <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
-                  <span class="material-symbols-outlined" style="font-size: 18px; color: #e53935;">location_on</span> Av. Córdoba 2351, CABA
+                <h3
+                  style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Hospital de Clínicas José de San Martín</h3>
+                <p
+                  style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
+                  <span class="material-symbols-outlined" style="font-size: 18px; color: #e53935;">location_on</span>
+                  Av. Córdoba 2351, CABA
                 </p>
-                <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light);">
-                  <span style="font-size: 13px; font-weight: 600; color: #2e7d32; display: flex; align-items: center; gap: 4px;">
-                    <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> Turnos Hoy Disponibles
+                <div
+                  style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light);">
+                  <span
+                    style="font-size: 13px; font-weight: 600; color: #2e7d32; display: flex; align-items: center; gap: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> Turnos Hoy
+                    Disponibles
                   </span>
-                  <a href="agendar-turno.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 13px;">Agendar</a>
+                  <a href="agendar-turno.html" class="btn btn-outline"
+                    style="padding: 6px 14px; font-size: 13px;">Agendar</a>
                 </div>
               </div>
             </div>
 
             <!-- Hospital 2 -->
-            <div class="stock-card" style="padding: 0; overflow: hidden; border-radius: 20px; background: #ffffff; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div class="stock-card"
+              style="padding: 0; overflow: hidden; border-radius: 20px; background: #ffffff; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
               <div style="position: relative; height: 180px; overflow: hidden;">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop" alt="Hospital Garrahan" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"/>
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop"
+                  alt="Hospital Garrahan"
+                  style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
               </div>
               <div style="padding: 24px;">
-                <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">Hospital de Pediatría Garrahan</h3>
-                <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
-                  <span class="material-symbols-outlined" style="font-size: 18px; color: #e53935;">location_on</span> Pichincha 1890, CABA
+                <h3
+                  style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Hospital de Pediatría Garrahan</h3>
+                <p
+                  style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
+                  <span class="material-symbols-outlined" style="font-size: 18px; color: #e53935;">location_on</span>
+                  Pichincha 1890, CABA
                 </p>
-                <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light);">
-                  <span style="font-size: 13px; font-weight: 600; color: #2e7d32; display: flex; align-items: center; gap: 4px;">
+                <div
+                  style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light);">
+                  <span
+                    style="font-size: 13px; font-weight: 600; color: #2e7d32; display: flex; align-items: center; gap: 4px;">
                     <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> Banco Abierto 24hs
                   </span>
-                  <a href="agendar-turno.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 13px;">Agendar</a>
+                  <a href="agendar-turno.html" class="btn btn-outline"
+                    style="padding: 6px 14px; font-size: 13px;">Agendar</a>
                 </div>
               </div>
             </div>
 
             <!-- Hospital 3 -->
-            <div class="stock-card" style="padding: 0; overflow: hidden; border-radius: 20px; background: #ffffff; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <div class="stock-card"
+              style="padding: 0; overflow: hidden; border-radius: 20px; background: #ffffff; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
               <div style="position: relative; height: 180px; overflow: hidden;">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600&auto=format&fit=crop" alt="Hospital Posadas" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"/>
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600&auto=format&fit=crop"
+                  alt="Hospital Posadas"
+                  style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" />
               </div>
               <div style="padding: 24px;">
-                <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">Hospital Nacional Alejandro Posadas</h3>
-                <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
-                  <span class="material-symbols-outlined" style="font-size: 18px; color: #e53935;">location_on</span> Av. Illia y Marconi, El Palomar
+                <h3
+                  style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Hospital Nacional Alejandro Posadas</h3>
+                <p
+                  style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px; display: flex; align-items: center; gap: 6px;">
+                  <span class="material-symbols-outlined" style="font-size: 18px; color: #e53935;">location_on</span>
+                  Av. Illia y Marconi, El Palomar
                 </p>
-                <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light);">
-                  <span style="font-size: 13px; font-weight: 600; color: #2e7d32; display: flex; align-items: center; gap: 4px;">
-                    <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> Turnos Mañana y Tarde
+                <div
+                  style="display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-light);">
+                  <span
+                    style="font-size: 13px; font-weight: 600; color: #2e7d32; display: flex; align-items: center; gap: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> Turnos Mañana y
+                    Tarde
                   </span>
-                  <a href="agendar-turno.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 13px;">Agendar</a>
+                  <a href="agendar-turno.html" class="btn btn-outline"
+                    style="padding: 6px 14px; font-size: 13px;">Agendar</a>
                 </div>
               </div>
             </div>
@@ -582,4 +708,5 @@
   </div>
 
 </body>
+
 </html>
