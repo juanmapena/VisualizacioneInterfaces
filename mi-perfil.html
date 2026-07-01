@@ -47,24 +47,25 @@
     }
     .form-input {
       width: 100%;
-      padding: 12px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
+      padding: 8px 0;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
       font-family: var(--font-body);
       font-size: 15px;
-      background-color: var(--bg-surface-alt);
+      background-color: transparent;
       color: var(--color-text-dark);
       transition: var(--transition-fast);
     }
     .form-input:focus {
       outline: none;
-      border-color: var(--color-primary);
-      background-color: #ffffff;
-      box-shadow: 0 0 0 3px rgba(182, 28, 37, 0.1);
+      border-bottom-color: var(--color-primary);
+      background-color: transparent;
+      box-shadow: none;
     }
     .form-input[readonly] {
-      background-color: var(--bg-surface-alt);
-      border-color: transparent;
+      background-color: transparent;
+      border-bottom-color: transparent;
       cursor: default;
     }
     .profile-avatar-wrapper {
@@ -87,6 +88,18 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .compact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 768px) {
+      .compact-form-grid {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 40px;
+        row-gap: 28px;
+      }
     }
   </style>
 </head>
@@ -131,70 +144,72 @@
     <main class="dash-main">
       <!-- Content Body -->
       <div class="dash-content-body container">
-        <h1 class="dash-page-title">Mi Perfil</h1>
-        <div style="margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-          <div>
-            <h2 style="font-family: var(--font-heading); font-size: 26px; color: var(--color-text-dark); margin-bottom: 6px;">Gestión de Datos Personales</h2>
-            <p style="font-size: 15px; color: var(--color-secondary);">Actualizá tu información personal, contacto de emergencia y preferencias.</p>
-          </div>
-          <button id="toggleEditBtn" class="btn btn-outline" onclick="enableEditMode()">
-            <span class="material-symbols-outlined">edit</span> Editar Perfil
-          </button>
+        <div style="margin-top: 10px; margin-bottom: 28px;">
+          <h1 style="font-family: var(--font-heading); font-size: 32px; color: var(--color-text-dark); margin-bottom: 6px;">Mi Perfil</h1>
+          <p style="font-size: 15px; color: var(--color-secondary);">Actualizá tu información personal, contacto de emergencia y preferencias.</p>
         </div>
 
         <!-- Personal Info Form -->
-        <div class="profile-card">
-          <div class="profile-avatar-wrapper">
-            <div class="avatar-large">
-              <img id="avatarImage" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez"/>
+        <div class="profile-card" style="padding: 32px;">
+          <!-- Top Row: Avatar, Basic Info & Blood Type Badge aligned horizontally -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light);">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; border: 2px solid var(--color-primary); flex-shrink: 0;">
+                <img id="avatarImage" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sofía Martínez" style="width: 100%; height: 100%; object-fit: cover;"/>
+              </div>
+              <div>
+                <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--color-text-dark); margin-bottom: 2px;">Sofía Martínez</h3>
+                <p style="font-size: 13px; color: var(--color-secondary);">Donante Frecuente</p>
+              </div>
             </div>
-            <div>
-              <h3 style="font-family: var(--font-heading); font-size: 22px; color: var(--color-text-dark); margin-bottom: 4px;">Sofía Martínez</h3>
-              <p style="font-size: 14px; color: var(--color-secondary);">Donante Frecuente (Factor A+)</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 16px;">
+              <button id="toggleEditBtn" class="btn btn-outline" onclick="enableEditMode()" style="padding: 6px 14px; font-size: 13px; min-height: auto;">
+                <span class="material-symbols-outlined" style="font-size: 16px;">edit</span> Editar
+              </button>
+              <div style="background-color: var(--bg-surface-alt); padding: 8px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); display: flex; align-items: center;">
+                <span style="font-size: 14px; font-weight: 800; color: var(--color-primary);">Factor de Sangre (A+)</span>
+              </div>
             </div>
           </div>
 
           <form id="profileForm" onsubmit="saveProfile(event)">
-            <div class="form-grid">
+            <!-- Compact 3-Column Inputs Grid -->
+            <div class="compact-form-grid">
               <div>
-                <label class="form-label">Nombre Completo</label>
-                <input type="text" class="form-input" id="inputNombre" value="Sofía Martínez" readonly required/>
+                <label class="form-label" style="font-size: 12px; margin-bottom: 4px;">Nombre Completo</label>
+                <input type="text" class="form-input" id="inputNombre" value="Sofía Martínez" readonly required style="padding: 8px 0; font-size: 14px;"/>
               </div>
 
               <div>
-                <label class="form-label">DNI / Documento</label>
-                <input type="text" class="form-input" id="inputDNI" value="41.223.884" readonly required/>
+                <label class="form-label" style="font-size: 12px; margin-bottom: 4px;">DNI / Documento</label>
+                <input type="text" class="form-input" id="inputDNI" value="41.223.884" readonly required style="padding: 8px 0; font-size: 14px;"/>
               </div>
 
               <div>
-                <label class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-input" id="inputEmail" value="sofia.martinez@email.ar" readonly required/>
+                <label class="form-label" style="font-size: 12px; margin-bottom: 4px;">Correo Electrónico</label>
+                <input type="email" class="form-input" id="inputEmail" value="sofia.martinez@email.ar" readonly required style="padding: 8px 0; font-size: 14px;"/>
               </div>
 
               <div>
-                <label class="form-label">Teléfono Móvil</label>
-                <input type="tel" class="form-input" id="inputTel" value="+54 11 4589-2211" readonly required/>
+                <label class="form-label" style="font-size: 12px; margin-bottom: 4px;">Teléfono Móvil</label>
+                <input type="tel" class="form-input" id="inputTel" value="+54 11 4589-2211" readonly required style="padding: 8px 0; font-size: 14px;"/>
               </div>
 
               <div>
-                <label class="form-label">Fecha de Nacimiento</label>
-                <input type="text" class="form-input" id="inputNac" value="14/08/1998" readonly/>
+                <label class="form-label" style="font-size: 12px; margin-bottom: 4px;">Fecha de Nacimiento</label>
+                <input type="text" class="form-input" id="inputNac" value="14/08/1998" readonly style="padding: 8px 0; font-size: 14px;"/>
               </div>
 
               <div>
-                <label class="form-label">Factor de Sangre</label>
-                <input type="text" class="form-input" id="inputFactor" value="A Positivo (A+)" readonly style="font-weight:700; color:var(--color-primary);"/>
-              </div>
-
-              <div class="form-group-full">
-                <label class="form-label">Dirección / Localidad</label>
-                <input type="text" class="form-input" id="inputDireccion" value="Av. Córdoba 2351, CABA" readonly required/>
+                <label class="form-label" style="font-size: 12px; margin-bottom: 4px;">Dirección / Localidad</label>
+                <input type="text" class="form-input" id="inputDireccion" value="Av. Córdoba 2351, CABA" readonly required style="padding: 8px 0; font-size: 14px;"/>
               </div>
             </div>
 
-            <div id="saveActionGroup" style="display: none; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-light); gap: 16px; justify-content: flex-end;">
-              <button type="button" class="btn btn-outline" onclick="cancelEditMode()">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <div id="saveActionGroup" style="display: none; margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border-light); gap: 16px; justify-content: flex-end;">
+              <button type="button" class="btn btn-outline" onclick="cancelEditMode()" style="padding: 6px 16px; font-size: 13px;">Cancelar</button>
+              <button type="submit" class="btn btn-primary" style="padding: 6px 16px; font-size: 13px;">Guardar Cambios</button>
             </div>
           </form>
         </div>
@@ -202,14 +217,36 @@
         <!-- Additional Section: Emergency Contact & Preferences -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
           <div class="profile-card">
-            <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--color-text-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-              <span class="material-symbols-outlined" style="color: var(--color-primary);">emergency</span> Contacto de Emergencia
-            </h3>
-            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: var(--color-secondary);">
-              <div><strong style="color: var(--color-text-dark);">Contacto:</strong> Carlos Martínez (Padre)</div>
-              <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> +54 11 9876-5432</div>
-              <div><strong style="color: var(--color-text-dark);">Relación:</strong> Familiar Directo</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+              <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--color-text-dark); margin: 0; display: flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="color: var(--color-primary);">emergency</span> Contacto de Emergencia
+              </h3>
+              <button id="toggleEmergEditBtn" class="btn btn-outline" onclick="enableEmergEdit()" style="padding: 6px 14px; font-size: 13px; min-height: auto;">
+                <span class="material-symbols-outlined" style="font-size: 16px;">edit</span> Editar
+              </button>
             </div>
+            
+            <form id="emergencyForm" onsubmit="saveEmergency(event)">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                  <label class="form-label" style="font-size: 11px; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 2px;">Contacto</label>
+                  <input type="text" class="form-input emergency-input" id="inputEmergContacto" value="Carlos Martínez (Padre)" readonly required style="padding: 8px 0; font-size: 14px;"/>
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 11px; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 2px;">Teléfono</label>
+                  <input type="tel" class="form-input emergency-input" id="inputEmergTel" value="+54 11 9876-5432" readonly required style="padding: 8px 0; font-size: 14px;"/>
+                </div>
+                <div>
+                  <label class="form-label" style="font-size: 11px; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 2px;">Relación</label>
+                  <input type="text" class="form-input emergency-input" id="inputEmergRelacion" value="Familiar Directo" readonly required style="padding: 8px 0; font-size: 14px;"/>
+                </div>
+              </div>
+              
+              <div id="emergSaveGroup" style="display: none; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border-light); gap: 12px; justify-content: flex-end;">
+                <button type="button" class="btn btn-outline" onclick="cancelEmergEdit()" style="padding: 4px 12px; font-size: 12px;">Cancelar</button>
+                <button type="submit" class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;">Guardar</button>
+              </div>
+            </form>
           </div>
 
           <div class="profile-card">
@@ -285,7 +322,7 @@
 
   <script>
     function enableEditMode() {
-      const inputs = document.querySelectorAll('.form-input');
+      const inputs = document.querySelectorAll('#profileForm .form-input');
       inputs.forEach(input => {
         if (input.id !== 'inputFactor') {
           input.removeAttribute('readonly');
@@ -297,7 +334,7 @@
     }
 
     function cancelEditMode() {
-      const inputs = document.querySelectorAll('.form-input');
+      const inputs = document.querySelectorAll('#profileForm .form-input');
       inputs.forEach(input => input.setAttribute('readonly', true));
       document.getElementById('saveActionGroup').style.display = 'none';
       document.getElementById('toggleEditBtn').style.display = 'inline-flex';
@@ -307,6 +344,34 @@
       e.preventDefault();
       alert('¡Tus datos personales han sido actualizados con éxito!');
       cancelEditMode();
+    }
+
+    // Emergency Contact edit functions
+    function enableEmergEdit() {
+      const inputs = document.querySelectorAll('.emergency-input');
+      inputs.forEach(input => {
+        input.removeAttribute('readonly');
+      });
+      document.getElementById('emergSaveGroup').style.display = 'flex';
+      document.getElementById('toggleEmergEditBtn').style.display = 'none';
+      document.getElementById('inputEmergContacto').focus();
+    }
+
+    // Cancel emergency contact edit
+    function cancelEmergEdit() {
+      const inputs = document.querySelectorAll('.emergency-input');
+      inputs.forEach(input => {
+        input.setAttribute('readonly', true);
+      });
+      document.getElementById('emergSaveGroup').style.display = 'none';
+      document.getElementById('toggleEmergEditBtn').style.display = 'inline-flex';
+    }
+
+    // Save emergency contact details
+    function saveEmergency(e) {
+      e.preventDefault();
+      alert('¡El contacto de emergencia ha sido actualizado con éxito!');
+      cancelEmergEdit();
     }
   </script>
 

@@ -55,6 +55,15 @@
       justify-content: center;
       flex-shrink: 0;
     }
+    .slider-btn:hover {
+      background-color: var(--color-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--color-primary) !important;
+      transform: translateY(-50%) scale(1.05) !important;
+    }
+    .slider-btn:active {
+      transform: translateY(-50%) scale(0.95) !important;
+    }
 
     /* Exact Yellow Banner from Screenshot */
     .yellow-alert-banner {
@@ -352,57 +361,76 @@
           </button>
         </div>
 
-        <!-- 3 Cards matching user screenshot exactly -->
-          <div style="text-align: center; margin-bottom: 24px; margin-top: 56px;">
-            <h3 style="display: block !important; text-align: center; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--color-text-dark); margin: 0 auto 8px auto;">
-              Recomendaciones de Cuidado Diario
-            </h3>
-            <p style="text-align: center; color: var(--color-secondary); font-size: 14px; margin: 0 auto;">Seguí estas pautas fundamentales para asegurar una recuperación óptima</p>
+        <!-- Carousel Slider instead of static cards -->
+        <div style="text-align: center; margin-bottom: 24px; margin-top: 56px;">
+          <h3 style="display: block !important; text-align: center; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--color-text-dark); margin: 0 auto 8px auto;">
+            Recomendaciones de Cuidado Diario
+          </h3>
+          <p style="text-align: center; color: var(--color-secondary); font-size: 14px; margin: 0 auto;">Seguí estas pautas fundamentales para asegurar una recuperación óptima</p>
+        </div>
+
+        <div class="slider-outer-container" style="position: relative; width: 100%; max-width: 650px; margin: 24px auto 0 auto; padding: 0 48px; box-sizing: border-box;">
+          <!-- Prev Button -->
+          <button class="slider-btn prev-btn" onclick="moveSlide(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: #ffffff; border: 1px solid var(--border-light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow-sm); z-index: 10; transition: var(--transition-fast); color: var(--color-text-dark);">
+            <span class="material-symbols-outlined" style="font-size: 20px; font-weight: 700;">chevron_left</span>
+          </button>
+
+          <!-- Slider Viewport -->
+          <div class="slider-viewport" style="overflow: hidden; width: 100%; border-radius: var(--radius-md);">
+            <div id="sliderTrack" class="slider-track" style="display: flex; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); width: 100%;">
+              <!-- Card 1: Hidratación Extra -->
+              <div class="slider-slide" style="flex: 0 0 100%; width: 100%; box-sizing: border-box; padding: 4px;">
+                <div class="post-card" style="margin: 0; width: 100%; min-height: 120px; box-sizing: border-box;">
+                  <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
+                    <span class="material-symbols-outlined">water_drop</span>
+                  </div>
+                  <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">Hidratación Extra</h4>
+                    <p style="font-size: 13.5px; color: var(--color-secondary); line-height: 1.5;">Bebe al menos 500ml adicionales de agua hoy para ayudar a restaurar el volumen plasmático.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Rico en Hierro -->
+              <div class="slider-slide" style="flex: 0 0 100%; width: 100%; box-sizing: border-box; padding: 4px;">
+                <div class="post-card" style="margin: 0; width: 100%; min-height: 120px; box-sizing: border-box;">
+                  <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
+                    <span class="material-symbols-outlined">restaurant</span>
+                  </div>
+                  <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">Rico en Hierro</h4>
+                    <p style="font-size: 13.5px; color: var(--color-secondary); line-height: 1.5;">Prioriza legumbres y carnes rojas magras en tus próximas 3 comidas.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Reposo Deportivo -->
+              <div class="slider-slide" style="flex: 0 0 100%; width: 100%; box-sizing: border-box; padding: 4px;">
+                <div class="post-card" style="margin: 0; width: 100%; min-height: 120px; box-sizing: border-box;">
+                  <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
+                    <span class="material-symbols-outlined">fitness_center</span>
+                  </div>
+                  <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">Reposo Deportivo</h4>
+                    <p style="font-size: 13.5px; color: var(--color-secondary); line-height: 1.5;">Evita cargar objetos pesados o realizar ejercicio intenso por las próximas 24 horas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="post-card-grid">
-            <!-- Card 1: Hidratación Extra -->
-            <div class="post-card">
-              <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
-                <span class="material-symbols-outlined">water_drop</span>
-              </div>
-              <div>
-                <h4
-                  style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">
-                  Hidratación Extra</h4>
-                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Bebe al menos 500ml
-                  adicionales de agua hoy para ayudar a restaurar el volumen plasmático.</p>
-              </div>
-            </div>
+          <!-- Next Button -->
+          <button class="slider-btn next-btn" onclick="moveSlide(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: #ffffff; border: 1px solid var(--border-light); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow-sm); z-index: 10; transition: var(--transition-fast); color: var(--color-text-dark);">
+            <span class="material-symbols-outlined" style="font-size: 20px; font-weight: 700;">chevron_right</span>
+          </button>
 
-            <!-- Card 2: Rico en Hierro -->
-            <div class="post-card">
-              <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
-                <span class="material-symbols-outlined">restaurant</span>
-              </div>
-              <div>
-                <h4
-                  style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">
-                  Rico en Hierro</h4>
-                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Prioriza legumbres y carnes
-                  rojas magras en tus próximas 3 comidas.</p>
-              </div>
-            </div>
-
-            <!-- Card 3: Reposo Deportivo -->
-            <div class="post-card">
-              <div class="post-icon-box" style="background-color: #ffebee; color: var(--color-primary);">
-                <span class="material-symbols-outlined">fitness_center</span>
-              </div>
-              <div>
-                <h4
-                  style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">
-                  Reposo Deportivo</h4>
-                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Evita cargar objetos
-                  pesados o realizar ejercicio intenso por las próximas 24 horas.</p>
-              </div>
-            </div>
+          <!-- Dots Indicators -->
+          <div style="display: flex; justify-content: center; gap: 8px; margin-top: 16px;">
+            <span class="slider-dot active" onclick="goToSlide(0)" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-primary); cursor: pointer; transition: all 0.3s;"></span>
+            <span class="slider-dot" onclick="goToSlide(1)" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--border-color); cursor: pointer; transition: all 0.3s;"></span>
+            <span class="slider-dot" onclick="goToSlide(2)" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--border-color); cursor: pointer; transition: all 0.3s;"></span>
           </div>
+        </div>
         </div>
       </div>
 
@@ -551,6 +579,44 @@
         modal.style.display = 'none';
       }, 250);
     }
+
+    // Recommendations Slider/Carousel Logic
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function updateSlider() {
+      const track = document.getElementById('sliderTrack');
+      if (track) {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+      
+      const dots = document.querySelectorAll('.slider-dot');
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.style.backgroundColor = 'var(--color-primary)';
+          dot.style.width = '12px';
+          dot.style.borderRadius = '4px';
+        } else {
+          dot.style.backgroundColor = 'var(--border-color)';
+          dot.style.width = '8px';
+          dot.style.borderRadius = '50%';
+        }
+      });
+    }
+
+    function moveSlide(dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateSlider();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateSlider();
+    });
   </script>
 </body>
 </html>

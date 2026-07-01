@@ -202,8 +202,8 @@
   <div id="confirm-modal" class="modal-backdrop hidden">
     <div class="modal-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
-        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px;">
-          <span class="material-symbols-outlined" style="color: var(--color-primary);">info</span> Detalle de su turno
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center;">
+          Detalle de su turno
         </h3>
         <button onclick="toggleModal('confirm-modal')" style="color: var(--color-secondary);"><span class="material-symbols-outlined">close</span></button>
       </div>
@@ -227,7 +227,7 @@
         </div>
       </div>
 
-      <div style="background-color: var(--status-warning-bg); padding: 14px; border-radius: var(--radius-sm); border-left: 4px solid var(--status-warning); margin-bottom: 24px; font-size: 13px; color: var(--color-text-dark);">
+      <div style="background-color: var(--status-warning-bg); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 24px; font-size: 13px; color: var(--color-text-dark);">
         <strong>Recordatorio importante:</strong> Recordá concurrir con tu DNI original, habiendo desayunado sin grasas ni lácteos, e hidratarte adecuadamente.
       </div>
 
@@ -269,6 +269,50 @@
     </div>
   </div>
 
+  <!-- Modal 3: Success Modal -->
+  <div id="success-modal" class="modal-backdrop hidden">
+    <div class="modal-card" style="max-width: 420px; text-align: center; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <!-- Success Icon -->
+      <div style="width: 56px; height: 56px; background-color: #e8f5e9; color: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15); margin-bottom: 4px; flex-shrink: 0;">
+        <span class="material-symbols-outlined" style="font-size: 32px; font-weight: bold;">check_circle</span>
+      </div>
+      <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); margin: 0; text-transform: uppercase; font-weight: 800;">
+        ¡ACCIÓN EXITOSA!
+      </h3>
+      <p style="font-size: 14.5px; color: #424242; line-height: 1.6; margin: 0;" id="successModalText">
+        ¡Tu turno ha sido reprogramado exitosamente!
+      </p>
+      <button onclick="toggleModal('success-modal')" class="btn btn-primary" style="margin-top: 8px; width: 100%; justify-content: center; background: var(--color-primary); border-color: var(--color-primary); padding: 12px; font-size: 14px; font-weight: 700; border-radius: 12px; color: #ffffff; cursor: pointer; border-style: solid; border-width: 1px; transition: background 0.2s ease;">
+        Entendido
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal 4: Cancel Confirmation Modal -->
+  <div id="cancel-confirm-modal" class="modal-backdrop hidden">
+    <div class="modal-card" style="max-width: 420px; text-align: center; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <!-- Warning Icon -->
+      <div style="width: 56px; height: 56px; background-color: #fff3e0; color: #e65100; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(230, 81, 0, 0.15); margin-bottom: 4px; flex-shrink: 0;">
+        <span class="material-symbols-outlined" style="font-size: 32px; font-weight: bold;">warning</span>
+      </div>
+      <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); margin: 0; text-transform: uppercase; font-weight: 800;">
+        ¿CANCELAR TURNO?
+      </h3>
+      <p style="font-size: 14.5px; color: #424242; line-height: 1.6; margin: 0;">
+        ¿Estás seguro de que deseas cancelar este turno? Esta acción no se puede deshacer.
+      </p>
+      <!-- Button Row -->
+      <div style="display: flex; gap: 12px; width: 100%; margin-top: 8px;">
+        <button onclick="toggleModal('cancel-confirm-modal')" class="btn btn-outline" style="flex: 1; justify-content: center; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 12px;">
+          No, mantener
+        </button>
+        <button onclick="executeCancellation()" class="btn btn-primary" style="flex: 1; justify-content: center; background: var(--color-primary); border-color: var(--color-primary); padding: 12px; font-size: 14px; font-weight: 700; border-radius: 12px; color: #ffffff;">
+          Sí, cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     let selectedTime = "09:30 AM";
 
@@ -298,18 +342,33 @@
       document.getElementById('modalTime').innerText = formattedDate + ' - ' + selectedTime;
       
       toggleModal('reprogram-modal');
-      alert('¡Tu turno ha sido reprogramado exitosamente!');
+      showSuccessModal('¡Tu turno ha sido reprogramado exitosamente!');
     }
 
     function cancelAppointment() {
-      if (confirm('¿Está seguro de que desea cancelar este turno?')) {
-        alert('El turno ha sido cancelado exitosamente.');
-        const card = document.querySelector('.stock-card');
-        card.innerHTML = `<div style="text-align: center; padding: 20px;">
+      toggleModal('cancel-confirm-modal');
+    }
+
+    function executeCancellation() {
+      toggleModal('cancel-confirm-modal');
+      
+      const card = document.querySelector('.stock-card');
+      if (card) {
+        card.innerHTML = `<div style="text-align: center; padding: 32px;">
           <span class="material-symbols-outlined" style="font-size: 48px; color: var(--color-secondary); margin-bottom: 12px;">event_busy</span>
           <p style="font-size: 16px; font-weight: 700; color: var(--color-text-dark); margin: 0;">No tenés turnos programados.</p>
         </div>`;
       }
+      
+      showSuccessModal('El turno ha sido cancelado exitosamente.');
+    }
+
+    function showSuccessModal(msg) {
+      const textNode = document.getElementById('successModalText');
+      if (textNode) {
+        textNode.innerText = msg;
+      }
+      toggleModal('success-modal');
     }
   </script>
 
