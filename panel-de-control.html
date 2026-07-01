@@ -98,24 +98,39 @@
       pointer-events: none;
     }
 
-    /* Custom Blood Drop Character Pins */
-    .blood-character-pin {
+    /* Modern Location Pins (Simple Blood Drop Emojis) */
+    .modern-map-pin {
       position: absolute;
       transform: translate(-50%, -100%);
       z-index: 20;
       cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .blood-character-pin:hover {
-      transform: translate(-50%, -115%) scale(1.25);
+    .modern-map-pin:hover {
+      transform: translate(-50%, -110%) scale(1.3);
       z-index: 30;
     }
 
-    .blood-character-pin svg {
-      width: 42px;
-      height: 52px;
-      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+    .modern-map-pin .material-symbols-outlined {
+      font-size: 38px;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+      font-variation-settings: 'FILL' 1;
+    }
+
+    .modern-map-pin.critical .material-symbols-outlined {
+      color: #d32f2f;
+    }
+
+    .modern-map-pin.urgent .material-symbols-outlined {
+      color: #ef6c00;
+    }
+
+    .modern-map-pin.normal .material-symbols-outlined {
+      color: #2e7d32;
     }
 
     /* Controls UI */
@@ -487,8 +502,8 @@
           <div class="banner-left">
             <!-- Saludo -->
             <div class="dash-greeting-card">
-              <h1>¡Hola de nuevo, Sofía! 👋</h1>
-              <p style="color: #ffffff !important;">Tu cuerpo está en óptimas condiciones para donar hoy.</p>
+              <h1>¡Hola de nuevo, Sofía!</h1>
+              <p style="color: var(--color-secondary) !important;">Tu cuerpo está en óptimas condiciones para donar hoy.</p>
             </div>
             <!-- Calendario Semanal Horizontal -->
             <div class="calendar-strip" style="display: flex; flex-direction: column; align-items: center; gap: 0;">
@@ -537,12 +552,11 @@
             </div>
           </div>
           
-          <div class="banner-right">
+          <div class="banner-right" style="display: flex; align-items: center; justify-content: flex-end;">
             <!-- Anillo de Recuperación Circular -->
-            <div class="ring-widget-card">
-              <h2 class="ring-title-above" style="font-size: 22px; margin-bottom: 12px; color: var(--color-text-dark);">Cuerpo Listo</h2>
-              <div class="ring-svg-container" style="width: 220px; height: 220px;">
-                <svg width="220" height="220" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
+            <div class="ring-widget-card" style="margin-top: 50px;">
+              <div class="ring-svg-container" style="width: 320px; height: 320px;">
+                <svg width="320" height="320" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
                   <defs>
                     <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stop-color="#a5d6a7" />
@@ -558,16 +572,9 @@
                   <circle cx="280" cy="150" r="10" fill="#ffffff" stroke="#388e3c" stroke-width="4" style="filter: drop-shadow(0 2px 6px rgba(56, 142, 60, 0.6));" />
                 </svg>
                 <div class="ring-text-overlay">
-                  <span class="ring-sublabel" style="color: #388e3c !important; font-weight: 700; font-size: 11px;">Recuperación</span>
-                  <span class="ring-value" style="color: #1b5e20; font-size: 14px; font-weight: 800;">PERIODO COMPLETO</span>
+                  <span class="ring-sublabel" style="color: #388e3c !important; font-weight: 700; font-size: 13px;">Recuperación</span>
+                  <span class="ring-value" style="color: #000000; font-size: 22px; font-weight: 800;">PERIODO COMPLETO</span>
                 </div>
-              </div>
-
-              <div style="margin-top: 16px; text-align: center;">
-                <p style="font-size: 14px; color: #ffffff !important; margin-bottom: 12px; font-weight: 600;">
-                  Tu estado de salud es óptimo. Ha pasado el período obligatorio desde tu última extracción.
-                </p>
-                <a href="historial-medico.html" class="btn btn-outline" style="padding: 8px 20px; font-size: 13px; background: #ffffff; border-color: var(--color-primary-container);">Ver Ficha Médica</a>
               </div>
             </div>
           </div>
@@ -592,12 +599,26 @@
         <div class="dash-bottom-grid">
           <!-- Left Column: Map -->
           <div class="dash-bottom-left">
-            <div class="section-header-compact">
-              <h2>
-                <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">map</span>
+            <div class="section-header-compact" style="text-align: center; margin-bottom: 24px;">
+              <h2 style="display: block !important; text-align: center; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--color-text-dark); margin: 0 auto 16px auto;">
                 Mapa de Hospitales y Urgencias Cercanas
               </h2>
-              <p>Hacé clic en los marcadores de gotas de sangre para ver las necesidades de stock de cada hospital.</p>
+              
+              <!-- Centered vertical Gotitas Legend Indicators -->
+              <div style="display: flex; gap: 32px; align-items: center; justify-content: center; margin-top: 12px; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;">
+                  <span class="material-symbols-outlined" style="color: #d32f2f; font-size: 28px; font-variation-settings: 'FILL' 1;">water_drop</span>
+                  <span style="font-size: 13px; font-weight: 700; color: var(--color-text-dark);">Stock Crítico</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;">
+                  <span class="material-symbols-outlined" style="color: #ef6c00; font-size: 28px; font-variation-settings: 'FILL' 1;">water_drop</span>
+                  <span style="font-size: 13px; font-weight: 700; color: var(--color-text-dark);">Stock Medio</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;">
+                  <span class="material-symbols-outlined" style="color: #2e7d32; font-size: 28px; font-variation-settings: 'FILL' 1;">water_drop</span>
+                  <span style="font-size: 13px; font-weight: 700; color: var(--color-text-dark);">Stock Normal</span>
+                </div>
+              </div>
             </div>
             
             <!-- Left Google Maps Replica Widget -->
@@ -657,121 +678,46 @@
                 <span>Notificar un problema de Maps</span>
               </div>
 
-              <!-- BLOOD DROP CHARACTERS PINS -->
-              <!-- 1. Belgrano Red Happy Drop -->
-              <div class="blood-character-pin" style="top: 20%; left: 44%;"
-                onclick="alert('Belgrano: Hospital Pirovano - Stock Normal')">
-                <svg viewBox="0 0 100 120">
-                  <!-- Legs -->
-                  <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
-                  <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
-                  <!-- Body -->
-                  <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
-                    fill="#e53935" stroke="#111" stroke-width="4" />
-                  <!-- Eyes & Smile -->
-                  <circle cx="40" cy="65" r="4" fill="#111" />
-                  <circle cx="60" cy="65" r="4" fill="#111" />
-                  <path d="M42 75 Q50 82 58 75" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" />
-                </svg>
+              <!-- BLOOD DROP SIMPLE STOCK PINS -->
+              <!-- 1. Belgrano (Green - Normal) -->
+              <div class="modern-map-pin normal" style="top: 20%; left: 44%;" onclick="alert('Belgrano: Hospital Pirovano - Stock Normal')">
+                <span class="material-symbols-outlined">water_drop</span>
               </div>
 
-              <!-- 2. Palermo Red Happy Waving Drop -->
-              <div class="blood-character-pin" style="top: 22%; left: 62%;"
-                onclick="alert('Palermo: Sanatorio Güemes - Stock A+ Urgente')">
-                <svg viewBox="0 0 100 120">
-                  <!-- Arms waving -->
-                  <path d="M20 65 Q10 50 15 40" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" />
-                  <path d="M80 65 Q90 50 85 40" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" />
-                  <!-- Legs -->
-                  <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
-                  <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
-                  <!-- Body -->
-                  <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
-                    fill="#e53935" stroke="#111" stroke-width="4" />
-                  <!-- Face -->
-                  <circle cx="40" cy="62" r="4" fill="#111" />
-                  <circle cx="60" cy="62" r="4" fill="#111" />
-                  <path d="M40 72 Q50 82 60 72" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round" />
-                </svg>
+              <!-- 2. Palermo (Yellow/Orange - Stock Medio) -->
+              <div class="modern-map-pin urgent" style="top: 22%; left: 62%;" onclick="alert('Palermo: Sanatorio Güemes - Stock Medio')">
+                <span class="material-symbols-outlined">water_drop</span>
               </div>
 
-              <!-- 3. Chacarita Grey/Red Urgent Drop -->
-              <div class="blood-character-pin" style="top: 36%; left: 54%;"
-                onclick="alert('Chacarita: Hospital Tornú - Alerta Crítica')">
-                <svg viewBox="0 0 100 120">
-                  <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
-                  <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
-                  <!-- Dual Body -->
-                  <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
-                    fill="#e53935" stroke="#111" stroke-width="4" />
-                  <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111"
-                    stroke-width="4" />
-                  <!-- Serious Eyes -->
-                  <line x1="36" y1="58" x2="46" y2="60" stroke="#fff" stroke-width="3" />
-                  <line x1="64" y1="58" x2="54" y2="60" stroke="#fff" stroke-width="3" />
-                </svg>
+              <!-- 3. Chacarita (Red - Stock Crítico) -->
+              <div class="modern-map-pin critical" style="top: 36%; left: 54%;" onclick="alert('Chacarita: Hospital Tornú - Stock Crítico')">
+                <span class="material-symbols-outlined">water_drop</span>
               </div>
 
-              <!-- 4. Recoleta Cluster (Grey & Red Drop) -->
-              <div class="blood-character-pin" style="top: 36%; left: 78%;"
-                onclick="alert('Recoleta: Hospital de Clínicas - Necesidad A+')">
-                <svg viewBox="0 0 100 120">
-                  <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
-                  <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
-                  <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
-                    fill="#e53935" stroke="#111" stroke-width="4" />
-                  <circle cx="40" cy="62" r="4" fill="#111" />
-                  <circle cx="60" cy="62" r="4" fill="#111" />
-                  <path d="M42 74 Q50 82 58 74" fill="none" stroke="#111" stroke-width="3" />
-                </svg>
+              <!-- 4. Recoleta (Yellow/Orange - Stock Medio) -->
+              <div class="modern-map-pin urgent" style="top: 36%; left: 78%;" onclick="alert('Recoleta: Hospital de Clínicas - Stock Medio')">
+                <span class="material-symbols-outlined">water_drop</span>
               </div>
 
-              <!-- 8. Flores White Drop -->
-              <div class="blood-character-pin" style="top: 70%; left: 44%;" onclick="alert('Flores: Hospital Álvarez')">
-                <svg viewBox="0 0 100 120">
-                  <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
-                  <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
-                  <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
-                    fill="#ffffff" stroke="#111" stroke-width="4" />
-                  <path d="M42 76 Q50 68 58 76" fill="none" stroke="#111" stroke-width="3" />
-                </svg>
+              <!-- 5. Flores (Green - Normal) -->
+              <div class="modern-map-pin normal" style="top: 70%; left: 44%;" onclick="alert('Flores: Hospital Álvarez - Stock Normal')">
+                <span class="material-symbols-outlined">water_drop</span>
               </div>
 
-              <!-- 9. Parque Patricios Grey/Red Drop -->
-              <div class="blood-character-pin" style="top: 74%; left: 85%;"
-                onclick="alert('Parque Patricios: Hospital Penna')">
-                <svg viewBox="0 0 100 120">
-                  <rect x="38" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <rect x="56" y="85" width="6" height="20" rx="3" fill="#111" />
-                  <ellipse cx="40" cy="105" rx="8" ry="4" fill="#111" />
-                  <ellipse cx="60" cy="105" rx="8" ry="4" fill="#111" />
-                  <path d="M50 5 C50 5, 15 50, 15 70 C15 88, 30 98, 50 98 C70 98, 85 88, 85 70 C85 50, 50 5, 50 5 Z"
-                    fill="#e53935" stroke="#111" stroke-width="4" />
-                  <path d="M50 5 C50 5, 15 50, 15 65 L85 65 C85 50, 50 5, 50 5 Z" fill="#424242" stroke="#111"
-                    stroke-width="4" />
-                </svg>
+              <!-- 6. Parque Patricios (Red - Stock Crítico) -->
+              <div class="modern-map-pin critical" style="top: 74%; left: 85%;" onclick="alert('Parque Patricios: Hospital Penna - Stock Crítico')">
+                <span class="material-symbols-outlined">water_drop</span>
               </div>
             </div>
           </div>
           
           <!-- Right Column: Hospitals -->
-          <div class="dash-bottom-right">
-            <div class="section-header-compact">
-              <h2>
-                <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">local_hospital</span>
+          <div class="dash-bottom-right" style="margin-top: 56px;">
+            <div class="section-header-compact" style="text-align: center; margin-bottom: 24px;">
+              <h2 style="display: block !important; text-align: center; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--color-text-dark); margin: 0 auto 8px auto;">
                 Hospitales Disponibles (A+)
               </h2>
-              <p>Centros de donación recomendados según tu tipo de sangre.</p>
+              <p style="text-align: center; color: var(--color-secondary); font-size: 14px; margin: 0 auto;">Centros de donación recomendados según tu tipo de sangre.</p>
             </div>
             
             <div class="hospitals-list-compact">

@@ -96,12 +96,15 @@
     .dash-hero-banner {
       background: linear-gradient(180deg, #fff5f5 0%, #e53935 100%);
       margin-top: -80px;
-      padding-top: 150px; /* Separates content from transparent navbar */
+      padding-top: 150px;
+      /* Separates content from transparent navbar */
       padding-bottom: 40px;
       border-bottom-left-radius: 50% 40px;
       border-bottom-right-radius: 50% 40px;
-      margin-bottom: 30px; /* Pull the alert banner up into the fold */
-      min-height: 80vh; /* Covers down to the fold */
+      margin-bottom: 30px;
+      /* Pull the alert banner up into the fold */
+      min-height: 80vh;
+      /* Covers down to the fold */
       box-sizing: border-box;
     }
 
@@ -120,7 +123,7 @@
       box-shadow: 0 4px 20px rgba(182, 28, 37, 0.05) !important;
       margin: 16px 0 0 0;
     }
-    
+
     .dash-hero-banner .ring-widget-card {
       background: transparent !important;
       border: none !important;
@@ -136,7 +139,8 @@
 
     #yellowAlertBanner {
       margin-top: 0;
-      margin-bottom: 120px; /* Pushes the care cards below the fold */
+      margin-bottom: 120px;
+      /* Pushes the care cards below the fold */
     }
 
     @media (max-width: 991px) {
@@ -145,6 +149,7 @@
         gap: 32px;
         text-align: center;
       }
+
       .dash-hero-banner {
         border-bottom-left-radius: 50% 20px;
         border-bottom-right-radius: 50% 20px;
@@ -166,8 +171,8 @@
       <nav>
         <ul class="nav-menu dash-nav-menu">
           <li><a href="panel-de-control.html" class="nav-link">Inicio</a></li>
-          <li><a href="mis-turnos.html" class="nav-link">Mis Turnos</a></li>
-          <li><a href="#" class="nav-link" onclick="blockedBookingAlert(event)" style="display: flex; align-items: center; gap: 4px;"><span class="material-symbols-outlined" style="font-size: 16px; color: #9e9e9e;">lock</span> Agendar</a></li>
+          <li><a href="mis-turnos-en-recuperacion.html" class="nav-link">Mis Turnos</a></li>
+          <li><a href="#" class="nav-link" onclick="showBlockedModal(event)">Agendar</a></li>
           <li><a href="historial-medico.html" class="nav-link">Ficha Médica</a></li>
           <li><a href="panel-de-control-en-recuperacion.html" class="nav-link active">Recuperación</a></li>
         </ul>
@@ -197,21 +202,23 @@
   <div class="dash-layout">
     <!-- Main Content Canvas -->
     <main class="dash-main">
-      
+
       <!-- Banner Hero con Gradiente y Forma Ovalada -->
       <div class="dash-hero-banner">
         <div class="container banner-grid">
           <div class="banner-left">
             <!-- Saludo -->
             <div class="dash-greeting-card">
-              <h1>¡Hola de nuevo, Sofía! 👋</h1>
-              <p style="color: #ffffff !important;">Tu organismo se encuentra en fase de reposo y recuperación tras tu última donación.</p>
+              <h1>¡Hola de nuevo, Sofía!</h1>
+              <p style="color: var(--color-secondary) !important;">Tu organismo se encuentra en fase de reposo y recuperación tras tu
+                última donación.</p>
             </div>
             <!-- Calendario Semanal Horizontal -->
             <div class="calendar-strip" style="display: flex; flex-direction: column; align-items: center; gap: 0;">
               <!-- Mini Month Header -->
-              <span style="font-family: var(--font-heading); font-size: 11px; font-weight: 800; color: var(--color-text-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Junio</span>
-              
+              <span
+                style="font-family: var(--font-heading); font-size: 11px; font-weight: 800; color: var(--color-text-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Junio</span>
+
               <!-- Row of Days -->
               <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 8px;">
                 <div class="calendar-day">
@@ -251,24 +258,25 @@
                   <span class="calendar-day-number">4</span>
                 </div>
               </div>
-              
+
               <!-- Tiny Divider Line -->
               <div style="width: 40px; height: 1.5px; background: rgba(0, 0, 0, 0.1); margin: 12px 0 8px 0;"></div>
-              
+
               <!-- Recovery Date Info Text -->
-              <div style="color: var(--color-text-dark); font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; letter-spacing: 0.2px;">
-                <span class="material-symbols-outlined" style="font-size: 16px; color: #2e7d32; font-weight: bold;">check_circle</span>
-                Apto para donar nuevamente: <span style="font-weight: 800; color: var(--color-text-dark);">14 de Agosto</span>
+              <div
+                style="color: var(--color-text-dark); font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; letter-spacing: 0.2px;">
+                <span class="material-symbols-outlined"
+                  style="font-size: 16px; color: #2e7d32; font-weight: bold;">check_circle</span>
+                Podés donar de nuevo desde el <span style="font-weight: 800; color: var(--color-text-dark);">14 de Agosto</span>
               </div>
             </div>
           </div>
-          
-          <div class="banner-right">
+
+          <div class="banner-right" style="display: flex; align-items: center; justify-content: flex-end;">
             <!-- Anillo de Recuperación Circular -->
-            <div class="ring-widget-card">
-              <h2 class="ring-title-above" style="font-size: 22px; margin-bottom: 12px; color: var(--color-text-dark);">Cuerpo en Recuperación</h2>
-              <div class="ring-svg-container" style="width: 220px; height: 220px;">
-                <svg width="220" height="220" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
+            <div class="ring-widget-card" style="margin-top: 50px;">
+              <div class="ring-svg-container" style="width: 320px; height: 320px;">
+                <svg width="320" height="320" viewBox="0 0 300 300" style="transform: rotate(-90deg);">
                   <defs>
                     <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stop-color="#ffe082" />
@@ -278,24 +286,18 @@
                   <!-- Background track (White Circle for High Contrast) -->
                   <circle cx="150" cy="150" r="130" fill="#ffffff" stroke="#fff8e1" stroke-width="12" />
                   <!-- Progress track (25% progress) -->
-                  <circle class="recovery-ring-path-25" cx="150" cy="150" r="130" fill="transparent" stroke="url(#ringGradient)"
-                    stroke-width="16" stroke-linecap="round" />
+                  <circle class="recovery-ring-path-25" cx="150" cy="150" r="130" fill="transparent"
+                    stroke="url(#ringGradient)" stroke-width="16" stroke-linecap="round" />
                   <!-- Glowing Cursor Thumb -->
-                  <circle cx="150" cy="280" r="10" fill="#ffffff" stroke="#ff9800" stroke-width="4" style="filter: drop-shadow(0 2px 6px rgba(255, 152, 0, 0.6));" />
+                  <circle cx="150" cy="280" r="10" fill="#ffffff" stroke="#ff9800" stroke-width="4"
+                    style="filter: drop-shadow(0 2px 6px rgba(255, 152, 0, 0.6));" />
                 </svg>
                 <div class="ring-text-overlay">
-                  <span class="ring-sublabel" style="color: #ff9800 !important; font-weight: 700; font-size: 11px;">Recuperación</span>
-                  <span class="ring-value" style="color: #e65100; font-size: 16px; font-weight: 800;">FALTAN 45 DÍAS</span>
+                  <span class="ring-sublabel"
+                    style="color: var(--color-primary) !important; font-weight: 700; font-size: 13px;">Recuperación</span>
+                  <span class="ring-value" style="color: #000000; font-size: 22px; font-weight: 800;">FALTAN 45
+                    DÍAS</span>
                 </div>
-              </div>
-
-              <div style="margin-top: 16px; text-align: center;">
-                <p style="font-size: 14px; color: #ffffff !important; margin-bottom: 12px; font-weight: 600;">
-                  Última extracción: hace 15 días (Hospital Posadas). Tu cuerpo está en proceso de hematopoyesis regenerando glóbulos rojos.
-                </p>
-                <button class="btn btn-outline" onclick="blockedBookingAlert(event)" style="padding: 8px 20px; font-size: 13px; background: #ffffff; border-color: var(--color-primary-container); opacity: 0.8; cursor: not-allowed; display: inline-flex; align-items: center; gap: 8px;">
-                  <span class="material-symbols-outlined" style="font-size: 16px;">lock</span> Agendar Turno (Bloqueado)
-                </button>
               </div>
             </div>
           </div>
@@ -312,16 +314,52 @@
             </div>
             <span>Tu cuerpo está fabricando nuevos glóbulos rojos. Faltan 45 días para tu próxima misión.</span>
           </div>
-          <button style="background: none; border: none; cursor: pointer; color: #795548; display: flex; display: flex; align-items: center;" onclick="document.getElementById('yellowAlertBanner').style.display='none'">
+          <button
+            style="background: none; border: none; cursor: pointer; color: #795548; display: flex; align-items: center;"
+            onclick="document.getElementById('yellowAlertBanner').style.display='none'">
             <span class="material-symbols-outlined">close</span>
           </button>
         </div>
 
+        <!-- Share & Gratitude Card -->
+        <div class="share-gratitude-card"
+          style="background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%); border: 1.5px solid #ffcdd2; border-radius: 24px; padding: 32px; margin: 32px auto 48px auto; box-shadow: 0 10px 30px rgba(182, 28, 37, 0.04); display: flex; flex-direction: column; gap: 20px; align-items: center; text-align: center; position: relative; overflow: hidden; max-width: 800px; box-sizing: border-box;">
+          <!-- Decorative Background Shape -->
+          <div
+            style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(229, 57, 53, 0.03); border-radius: 50%;">
+          </div>
+
+          <div
+            style="background: #ffebee; color: #e53935; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(229, 57, 53, 0.15); margin-bottom: 4px; flex-shrink: 0;">
+            <span class="material-symbols-outlined"
+              style="font-size: 32px; font-variation-settings: 'FILL' 1;">favorite</span>
+          </div>
+
+          <div style="max-width: 650px;">
+            <h3
+              style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: #000000; margin: 0 0 12px 0;">
+              ¡Tu compromiso salva vidas, Sofía!
+            </h3>
+            <p style="font-size: 14.5px; color: #424242; line-height: 1.6; margin: 0;">
+              Te agradecemos de corazón por haber donado. Tu ayuda es fundamental para salvar vidas. Invitá a tus
+              conocidos compartiendo el enlace de la página.
+            </p>
+          </div>
+
+          <button onclick="copyShareLink(this)" class="btn btn-outline"
+            style="padding: 12px 28px; font-size: 14px; font-weight: 700; border-color: #e53935; color: #e53935; display: inline-flex; align-items: center; justify-content: center; border-width: 2px; border-radius: 50px; transition: all 0.3s ease; cursor: pointer; background: #ffffff;">
+            Copiar Enlace del Sitio
+          </button>
+        </div>
+
         <!-- 3 Cards matching user screenshot exactly -->
-        <div>
-          <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); margin-bottom: 8px;">Recomendaciones de Cuidado Diario</h3>
-          <p style="font-size: 14px; color: var(--color-secondary);">Seguí estas 3 pautas fundamentales para asegurar una recuperación óptima:</p>
-          
+          <div style="text-align: center; margin-bottom: 24px; margin-top: 56px;">
+            <h3 style="display: block !important; text-align: center; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--color-text-dark); margin: 0 auto 8px auto;">
+              Recomendaciones de Cuidado Diario
+            </h3>
+            <p style="text-align: center; color: var(--color-secondary); font-size: 14px; margin: 0 auto;">Seguí estas pautas fundamentales para asegurar una recuperación óptima</p>
+          </div>
+
           <div class="post-card-grid">
             <!-- Card 1: Hidratación Extra -->
             <div class="post-card">
@@ -329,8 +367,11 @@
                 <span class="material-symbols-outlined">water_drop</span>
               </div>
               <div>
-                <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">Hidratación Extra</h4>
-                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Bebe al menos 500ml adicionales de agua hoy para ayudar a restaurar el volumen plasmático.</p>
+                <h4
+                  style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Hidratación Extra</h4>
+                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Bebe al menos 500ml
+                  adicionales de agua hoy para ayudar a restaurar el volumen plasmático.</p>
               </div>
             </div>
 
@@ -340,8 +381,11 @@
                 <span class="material-symbols-outlined">restaurant</span>
               </div>
               <div>
-                <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">Rico en Hierro</h4>
-                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Prioriza legumbres y carnes rojas magras en tus próximas 3 comidas.</p>
+                <h4
+                  style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Rico en Hierro</h4>
+                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Prioriza legumbres y carnes
+                  rojas magras en tus próximas 3 comidas.</p>
               </div>
             </div>
 
@@ -351,8 +395,11 @@
                 <span class="material-symbols-outlined">fitness_center</span>
               </div>
               <div>
-                <h4 style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">Reposo Deportivo</h4>
-                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Evita cargar objetos pesados o realizar ejercicio intenso por las próximas 24 horas.</p>
+                <h4
+                  style="font-family: var(--font-heading); font-size: 16px; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Reposo Deportivo</h4>
+                <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5;">Evita cargar objetos
+                  pesados o realizar ejercicio intenso por las próximas 24 horas.</p>
               </div>
             </div>
           </div>
@@ -366,7 +413,8 @@
             <div class="footer-brand-col">
               <span class="footer-logo">Got<span class="logo-i">ı</span></span>
               <p class="footer-text">
-                Conectando la solidaridad ciudadana con las necesidades urgentes de salud. La red tecnológica nacional de
+                Conectando la solidaridad ciudadana con las necesidades urgentes de salud. La red tecnológica nacional
+                de
                 donación voluntaria de sangre en Argentina.
               </p>
             </div>
@@ -404,7 +452,8 @@
             <p>&copy; 2026 Goti - Red Nacional de Donación de Sangre. Todos los derechos reservados.</p>
             <div class="social-links">
               <a href="#" class="social-icon" title="Compartir"><span class="material-symbols-outlined">share</span></a>
-              <a href="#" class="social-icon" title="Enviar Mensaje"><span class="material-symbols-outlined">mail</span></a>
+              <a href="#" class="social-icon" title="Enviar Mensaje"><span
+                  class="material-symbols-outlined">mail</span></a>
             </div>
           </div>
         </div>
@@ -413,11 +462,95 @@
   </div>
 
   <script>
-    function blockedBookingAlert(e) {
-      if(e) e.preventDefault();
-      alert('🔒 ¡Hola Sofía! Actualmente te encuentras en período de recuperación de 60 días tras tu última donación.\n\nFaltan 45 días para que tu cuerpo restablezca completamente los niveles hematológicos. Por tu seguridad médica, no es posible agendar un nuevo turno en este momento.');
+
+    function copyShareLink(btn) {
+      const shareUrl = window.location.origin + '/index.html';
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '¡Enlace copiado!';
+        btn.style.backgroundColor = '#2e7d32';
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = '#2e7d32';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.backgroundColor = '#ffffff';
+          btn.style.color = '#e53935';
+          btn.style.borderColor = '#e53935';
+        }, 2000);
+      }).catch(err => {
+        // Fallback in case clipboard API isn't allowed/supported
+        const tempInput = document.createElement('input');
+        tempInput.value = shareUrl;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '¡Enlace copiado!';
+        btn.style.backgroundColor = '#2e7d32';
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = '#2e7d32';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.backgroundColor = '#ffffff';
+          btn.style.color = '#e53935';
+          btn.style.borderColor = '#e53935';
+        }, 2000);
+      });
     }
   </script>
 
+  <!-- Custom Blocked Booking Warning Modal -->
+  <div id="blockedBookingModal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s ease; box-sizing: border-box;">
+    <div class="modal-card" style="background: #ffffff; border-radius: 24px; max-width: 480px; width: 90%; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: none; overflow: hidden; transform: scale(0.9); transition: transform 0.25s ease; box-sizing: border-box;">
+      
+      <div style="padding: 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; box-sizing: border-box;">
+        <!-- Icon Container -->
+        <div style="width: 64px; height: 64px; background: #fff8e1; color: #f57c00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; box-shadow: 0 4px 12px rgba(245, 124, 0, 0.15); flex-shrink: 0;">
+          <span class="material-symbols-outlined" style="font-size: 32px; font-weight: bold;">warning</span>
+        </div>
+        
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: #000000; margin: 0; text-transform: uppercase;">
+          NO PODÉS AGENDAR TURNOS ACTUALMENTE
+        </h3>
+        
+        <p style="font-size: 14.5px; color: #424242; line-height: 1.6; margin: 0;">
+          ¡Hola Sofía! Estás en tu etapa obligatoria de recuperación.
+        </p>
+        <p style="font-size: 14px; color: #616161; line-height: 1.6; margin: 0; font-weight: 600; background: #fffde7; padding: 12px; border-radius: 12px; border: 1px dashed #ffe082;">
+          Faltan 45 días para que puedas donar otra vez.
+        </p>
+        
+        <!-- Button Row -->
+        <button onclick="closeBlockedModal()" class="btn btn-primary" style="margin-top: 12px; width: 100%; justify-content: center; background: var(--color-primary); border-color: var(--color-primary); padding: 12px; font-size: 14px; font-weight: 700; border-radius: 12px; color: #ffffff; cursor: pointer; border-style: solid; border-width: 1px; transition: background 0.2s ease;">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showBlockedModal(e) {
+      if(e) e.preventDefault();
+      const modal = document.getElementById('blockedBookingModal');
+      const card = modal.querySelector('.modal-card');
+      modal.style.display = 'flex';
+      // Trigger reflow
+      modal.offsetHeight;
+      modal.style.opacity = '1';
+      card.style.transform = 'scale(1)';
+    }
+
+    function closeBlockedModal() {
+      const modal = document.getElementById('blockedBookingModal');
+      const card = modal.querySelector('.modal-card');
+      modal.style.opacity = '0';
+      card.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 250);
+    }
+  </script>
 </body>
 </html>
