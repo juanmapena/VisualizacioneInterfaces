@@ -116,7 +116,7 @@ img {
    3. Navigation Header
    -------------------------------------------------------------------------- */
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -394,6 +394,7 @@ img {
   gap: 16px;
 }
 
+/* Buttons in hero inherit standard button styles for consistency */
 .hero-cta-group .btn-primary {
   background-color: #ffffff;
   color: var(--color-primary);
@@ -529,10 +530,11 @@ img {
 }
 
 .stock-card {
-  background: var(--bg-main);
+  background: var(--bg-surface);
   border-radius: var(--radius-md);
   padding: 20px;
   border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
   transition: var(--transition-normal);
   display: flex;
   flex-direction: column;
@@ -624,10 +626,9 @@ img {
    7. Requisitos Básicos (Pre-Requisites)
    -------------------------------------------------------------------------- */
 .title-tag {
-  background-color: #ffebee;
   color: #e53935;
-  padding: 4px 14px;
-  border-radius: 12px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
   display: inline-block;
   margin: 0 4px;
 }

@@ -63,6 +63,24 @@
       color: #ffffff;
       border-color: var(--color-primary-container);
     }
+
+    /* Hospital Grid Styling */
+    .hospital-booking-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    @media (min-width: 768px) {
+      .hospital-booking-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 992px) {
+      .hospital-booking-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -105,44 +123,167 @@
     <!-- Main Content Canvas -->
     <main class="dash-main">
       <!-- Content Body -->
-      <div class="dash-content-body container">
-        <h1 class="dash-page-title">Agendar Turno</h1>
+      <div class="dash-content-body container" style="padding-top: 20px;">
         <div style="margin-bottom: 24px;">
-          <h2 style="font-family: var(--font-heading); font-size: 26px; color: var(--color-text-dark); margin-bottom: 6px;">Programar Nueva Donación</h2>
+          <h2 style="font-family: var(--font-heading); font-size: 26px; color: var(--color-text-dark); margin-bottom: 6px;">Agendar Turno</h2>
           <p style="font-size: 15px; color: var(--color-secondary);">Seleccioná la institución médica de tu preferencia para iniciar la reserva.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
-          <!-- Hospital Selection Card 1 -->
-          <div class="stock-card" style="padding: 24px;">
-            <span class="stock-badge critical" style="margin-bottom: 12px; display: inline-block;">Requerimiento Urgente</span>
-            <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); margin-bottom: 8px;">Hospital Balestrini</h3>
-            <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px;">Av. Mons. Bufano y Ruta 21, Ciudad Evita.</p>
-            
-            <div style="margin-bottom: 20px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 6px;">
-              <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Sáb: 08:00 - 14:00</div>
-              <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4489-9000</div>
+        <div class="hospital-booking-grid">
+          <!-- Hospital Selection Card 1: Balestrini (Red - Requerimiento Urgente) -->
+          <div class="stock-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- Hospital Image -->
+            <div style="width: 100%; height: 160px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=600&auto=format&fit=crop" alt="Hospital Balestrini" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
+            
+            <!-- Card Body Content -->
+            <div style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+                <span class="stock-badge critical" style="margin-bottom: 12px; display: inline-block;">Requerimiento Urgente</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; color: var(--color-text-dark); margin-bottom: 6px;">Hospital Balestrini</h3>
+                <p style="font-size: 13.5px; color: var(--color-secondary); margin-bottom: 12px;">Av. Mons. Bufano y Ruta 21, Ciudad Evita.</p>
+                
+                <div style="margin-bottom: 16px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 4px;">
+                  <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Sáb: 08:00 - 14:00</div>
+                  <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4489-9000</div>
+                </div>
+              </div>
 
-            <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Balestrini')">
-              Agendar en Hospital Balestrini
-            </button>
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Balestrini')">
+                Agendar en Hospital Balestrini
+              </button>
+            </div>
           </div>
 
-          <!-- Hospital Selection Card 2 -->
-          <div class="stock-card" style="padding: 24px;">
-            <span class="stock-badge warning" style="margin-bottom: 12px; display: inline-block;">Stock Moderado</span>
-            <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); margin-bottom: 8px;">Hospital Posadas</h3>
-            <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px;">Illia y Marconi, El Palomar, Morón.</p>
-            
-            <div style="margin-bottom: 20px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 6px;">
-              <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Vie: 07:30 - 12:30</div>
-              <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4469-9300</div>
+          <!-- Hospital Selection Card 2: Británico (Red - Requerimiento Urgente) -->
+          <div class="stock-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- Hospital Image -->
+            <div style="width: 100%; height: 160px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=600&auto=format&fit=crop" alt="Hospital Británico" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
 
-            <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Posadas')">
-              Agendar en Hospital Posadas
-            </button>
+            <!-- Card Body Content -->
+            <div style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+                <span class="stock-badge critical" style="margin-bottom: 12px; display: inline-block;">Requerimiento Urgente</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; color: var(--color-text-dark); margin-bottom: 6px;">Hospital Británico</h3>
+                <p style="font-size: 13.5px; color: var(--color-secondary); margin-bottom: 12px;">Perdriel 74, Barracas, CABA.</p>
+                
+                <div style="margin-bottom: 16px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 4px;">
+                  <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Vie: 07:00 - 15:00</div>
+                  <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4309-6400</div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Británico')">
+                Agendar en Hospital Británico
+              </button>
+            </div>
+          </div>
+
+          <!-- Hospital Selection Card 3: Posadas (Yellow - Stock Moderado) -->
+          <div class="stock-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- Hospital Image -->
+            <div style="width: 100%; height: 160px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop" alt="Hospital Posadas" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+
+            <!-- Card Body Content -->
+            <div style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+                <span class="stock-badge warning" style="margin-bottom: 12px; display: inline-block;">Stock Moderado</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; color: var(--color-text-dark); margin-bottom: 6px;">Hospital Posadas</h3>
+                <p style="font-size: 13.5px; color: var(--color-secondary); margin-bottom: 12px;">Illia y Marconi, El Palomar, Morón.</p>
+                
+                <div style="margin-bottom: 16px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 4px;">
+                  <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Vie: 07:30 - 12:30</div>
+                  <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4469-9300</div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Posadas')">
+                Agendar en Hospital Posadas
+              </button>
+            </div>
+          </div>
+
+          <!-- Hospital Selection Card 4: Clínicas (Yellow - Stock Moderado) -->
+          <div class="stock-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- Hospital Image -->
+            <div style="width: 100%; height: 160px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=600&auto=format&fit=crop" alt="Hospital de Clínicas" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+
+            <!-- Card Body Content -->
+            <div style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+                <span class="stock-badge warning" style="margin-bottom: 12px; display: inline-block;">Stock Moderado</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; color: var(--color-text-dark); margin-bottom: 6px;">Hospital de Clínicas</h3>
+                <p style="font-size: 13.5px; color: var(--color-secondary); margin-bottom: 12px;">Av. Córdoba 2351, Recoleta, CABA.</p>
+                
+                <div style="margin-bottom: 16px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 4px;">
+                  <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Sáb: 08:00 - 13:00</div>
+                  <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 5950-8000</div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital de Clínicas')">
+                Agendar en Hospital de Clínicas
+              </button>
+            </div>
+          </div>
+
+          <!-- Hospital Selection Card 5: Italiano (Green - Stock Óptimo) -->
+          <div class="stock-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- Hospital Image -->
+            <div style="width: 100%; height: 160px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=600&auto=format&fit=crop" alt="Hospital Italiano" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+
+            <!-- Card Body Content -->
+            <div style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+                <span class="stock-badge" style="margin-bottom: 12px; display: inline-block; background-color: var(--status-good-bg); color: var(--status-good);">Stock Óptimo</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; color: var(--color-text-dark); margin-bottom: 6px;">Hospital Italiano</h3>
+                <p style="font-size: 13.5px; color: var(--color-secondary); margin-bottom: 12px;">Av. Juan D. Perón 4190, Almagro, CABA.</p>
+                
+                <div style="margin-bottom: 16px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 4px;">
+                  <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Vie: 08:00 - 16:00</div>
+                  <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4959-0200</div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Italiano')">
+                Agendar en Hospital Italiano
+              </button>
+            </div>
+          </div>
+
+          <!-- Hospital Selection Card 6: Argerich (Green - Stock Óptimo) -->
+          <div class="stock-card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+            <!-- Hospital Image -->
+            <div style="width: 100%; height: 160px; overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=600&auto=format&fit=crop" alt="Hospital Argerich" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+
+            <!-- Card Body Content -->
+            <div style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+                <span class="stock-badge" style="margin-bottom: 12px; display: inline-block; background-color: var(--status-good-bg); color: var(--status-good);">Stock Óptimo</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; color: var(--color-text-dark); margin-bottom: 6px;">Hospital Argerich</h3>
+                <p style="font-size: 13.5px; color: var(--color-secondary); margin-bottom: 12px;">Alte. Brown 240, La Boca, CABA.</p>
+                
+                <div style="margin-bottom: 16px; font-size: 13px; color: var(--color-secondary); display: flex; flex-direction: column; gap: 4px;">
+                  <div><strong style="color: var(--color-text-dark);">Horario:</strong> Lun - Vie: 08:00 - 15:00</div>
+                  <div><strong style="color: var(--color-text-dark);">Teléfono:</strong> 011 4121-0700</div>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="startBooking('Hospital Argerich')">
+                Agendar en Hospital Argerich
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -202,38 +343,149 @@
 
   <!-- Modal Step 1: Pre-Triage & Recommendations Warning Modal -->
   <div id="warning-modal" class="modal-backdrop hidden">
-    <div class="modal-card">
+    <div class="modal-card" style="max-width: 620px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
-        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-primary); display: flex; align-items: center; gap: 8px;">
-          <span class="material-symbols-outlined">warning</span> Requisitos y Avisos Previos
+        <h3 style="font-family: var(--font-heading); font-size: 22px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px; font-weight: 800;">
+          Requisitos para donar sangre
         </h3>
-        <button onclick="toggleModal('warning-modal')" style="color: var(--color-secondary);"><span class="material-symbols-outlined">close</span></button>
+        <button onclick="toggleModal('warning-modal')" style="color: var(--color-secondary); background: none; border: none; cursor: pointer;"><span class="material-symbols-outlined" style="font-size: 24px;">close</span></button>
       </div>
 
-      <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 16px;">Por favor, confirmá que cumplís con las siguientes condiciones antes de continuar con la selección de fecha y horario:</p>
+      <p style="font-size: 14px; color: var(--color-secondary); margin-bottom: 20px; font-weight: 600;">Antes de anotarte para donar sangre debés tener en cuenta:</p>
 
-      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; background-color: var(--bg-surface-alt); padding: 18px; border-radius: var(--radius-md);">
-        <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--color-text-dark);">
-          <span class="material-symbols-outlined" style="color: var(--status-good);">check_circle</span>
-          <span><strong>Documentación:</strong> Presentar DNI, Cédula o Pasaporte en original.</span>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 24px;">
+        <!-- Card 1: Documentación -->
+        <div style="background-color: var(--bg-surface-alt); padding: 14px 10px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 34px; color: var(--color-primary);">badge</span>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--color-text-dark);">Documentación</div>
+          <div style="font-size: 11px; color: var(--color-secondary); line-height: 1.4;">Presentar DNI, Cédula o Pasaporte en original.</div>
         </div>
-        <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--color-text-dark);">
-          <span class="material-symbols-outlined" style="color: var(--status-good);">check_circle</span>
-          <span><strong>Desayuno:</strong> Concurrir habiendo desayunado sin grasas ni lácteos.</span>
+
+        <!-- Card 2: Desayuno -->
+        <div style="background-color: var(--bg-surface-alt); padding: 14px 10px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 34px; color: var(--color-primary);">restaurant</span>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--color-text-dark);">Desayuno</div>
+          <div style="font-size: 11px; color: var(--color-secondary); line-height: 1.4;">Concurrir habiendo desayunado sin grasas ni lácteos.</div>
         </div>
-        <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--color-text-dark);">
-          <span class="material-symbols-outlined" style="color: var(--status-good);">check_circle</span>
-          <span><strong>Peso y Edad:</strong> Tener entre 16 y 65 años y pesar más de 50 kg.</span>
+
+        <!-- Card 3: Peso y Edad -->
+        <div style="background-color: var(--bg-surface-alt); padding: 14px 10px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 34px; color: var(--color-primary);">scale</span>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--color-text-dark);">Peso y Edad</div>
+          <div style="font-size: 11px; color: var(--color-secondary); line-height: 1.4;">Tener entre 16 y 65 años y pesar más de 50 kg.</div>
         </div>
-        <div style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--color-text-dark);">
-          <span class="material-symbols-outlined" style="color: var(--status-good);">check_circle</span>
-          <span><strong>Intervalo:</strong> Deberán haber pasado al menos 8 semanas de tu última donación.</span>
+
+        <!-- Card 4: Intervalo -->
+        <div style="background-color: var(--bg-surface-alt); padding: 14px 10px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 34px; color: var(--color-primary);">history</span>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--color-text-dark);">Intervalo</div>
+          <div style="font-size: 11px; color: var(--color-secondary); line-height: 1.4;">Deberán haber pasado al menos 8 semanas de tu última donación.</div>
+        </div>
+
+        <!-- Card 5: Tatuajes -->
+        <div style="background-color: var(--bg-surface-alt); padding: 14px 10px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 34px; color: var(--color-primary);">draw</span>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--color-text-dark);">Tatuajes</div>
+          <div style="font-size: 11px; color: var(--color-secondary); line-height: 1.4;">Deberán haber transcurrido al menos 6 meses desde tu último tatuaje.</div>
+        </div>
+
+        <!-- Card 6: Salud y Descanso -->
+        <div style="background-color: var(--bg-surface-alt); padding: 14px 10px; border-radius: var(--radius-md); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 1px solid var(--border-light); box-shadow: var(--shadow-sm);">
+          <span class="material-symbols-outlined" style="font-size: 34px; color: var(--color-primary);">sentiment_satisfied</span>
+          <div style="font-size: 13.5px; font-weight: 800; color: var(--color-text-dark);">Salud General</div>
+          <div style="font-size: 11px; color: var(--color-secondary); line-height: 1.4;">Sentirse bien y haber descansado al menos 6 horas antes de donar.</div>
         </div>
       </div>
 
-      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="goToDateTimeModal()">
-        Entendido, Continuar a Elegir Día y Horario
-      </button>
+      <div style="display: flex; justify-content: flex-end; margin-top: 12px;">
+        <button class="btn btn-primary" style="padding: 12px 32px; font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 8px;" onclick="startQuestionnaire()">
+          <span class="material-symbols-outlined" style="font-size: 20px; color: #ffffff;">check</span> Puedo donar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Step 1.5: Pre-Triage Questionnaire Modal -->
+  <div id="question-modal" class="modal-backdrop hidden">
+    <div class="modal-card" style="max-width: 500px; text-align: center;">
+      <!-- Modal Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px; font-weight: 800;">
+          Cuestionario de Aptitud
+        </h3>
+        <button onclick="closeQuestionnaire()" style="color: var(--color-secondary); background: none; border: none; cursor: pointer;"><span class="material-symbols-outlined" style="font-size: 24px;">close</span></button>
+      </div>
+
+      <!-- Question Card Container -->
+      <div id="question-card-content">
+        <!-- Back Button (Arrow + Volver) -->
+        <div style="text-align: left; margin-bottom: 12px;">
+          <a href="javascript:void(0)" onclick="goBackQuestion()" style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-text-dark); font-size: 13px; font-weight: 700; text-decoration: none;">
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span> Volver
+          </a>
+        </div>
+
+        <!-- Progress Info -->
+        <div style="font-size: 13px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;" id="question-progress">
+          Pregunta 1 de 6
+        </div>
+        
+        <!-- Big Icon -->
+        <div style="width: 80px; height: 80px; background-color: var(--color-primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+          <span class="material-symbols-outlined" id="question-icon" style="font-size: 40px; color: var(--color-primary);">badge</span>
+        </div>
+
+        <!-- Question Title -->
+        <h4 id="question-title" style="font-size: 18px; font-weight: 800; color: var(--color-text-dark); margin-bottom: 12px;">
+          Documentación
+        </h4>
+
+        <!-- Question Text -->
+        <p id="question-text" style="font-size: 15px; color: var(--color-secondary); line-height: 1.5; margin-bottom: 32px; min-height: 50px; padding: 0 10px;">
+          ¿Tenés contigo tu DNI, Cédula o Pasaporte en original para presentar en el hospital?
+        </p>
+
+        <!-- Yes / No Buttons -->
+        <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 10px;">
+          <button class="btn btn-outline" style="min-width: 130px; justify-content: center; font-weight: 700;" onclick="answerQuestion(false)">
+            No
+          </button>
+          <button class="btn btn-primary" style="min-width: 130px; justify-content: center; font-weight: 700; background-color: var(--status-good); border-color: var(--status-good);" onclick="answerQuestion(true)">
+            Sí
+          </button>
+        </div>
+      </div>
+      
+      <!-- Result Error Container -->
+      <div id="question-result-fail" style="display: none;">
+        <div style="width: 80px; height: 80px; background-color: #ffebee; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+          <span class="material-symbols-outlined" style="font-size: 45px; color: #d32f2f;">cancel</span>
+        </div>
+        <h4 style="font-size: 20px; font-weight: 800; color: #d32f2f; margin-bottom: 12px;">Requisitos no cumplidos</h4>
+        <p style="font-size: 14.5px; color: var(--color-secondary); line-height: 1.5; margin-bottom: 16px;">
+          Lo sentimos, de acuerdo a tus respuestas, no cumplís con todas las condiciones obligatorias para donar sangre en este momento.
+        </p>
+        <p style="font-size: 13px; color: var(--color-secondary); line-height: 1.5; margin-bottom: 32px;">
+          Si usted se confundió en alguna de sus respuestas, <a href="javascript:void(0)" onclick="returnToWarningModal()" style="color: var(--color-primary); font-weight: 700; text-decoration: underline;">presione aquí</a> para volver al módulo anterior.
+        </p>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="closeQuestionnaire()">
+          Cerrar
+        </button>
+      </div>
+
+      <!-- Result Success Container -->
+      <div id="question-result-success" style="display: none;">
+        <div style="width: 80px; height: 80px; background-color: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+          <span class="material-symbols-outlined" style="font-size: 45px; color: #2e7d32;">check_circle</span>
+        </div>
+        <h4 style="font-size: 20px; font-weight: 800; color: #2e7d32; margin-bottom: 12px;">¡Apto para Donar!</h4>
+        <p style="font-size: 14.5px; color: var(--color-secondary); line-height: 1.5; margin-bottom: 32px;">
+          ¡Excelente! Has superado el test de requisitos previos con éxito. Ahora podés agendar tu turno.
+        </p>
+        <button class="btn btn-primary" style="width: 100%; justify-content: center; background-color: var(--status-good); border-color: var(--status-good);" onclick="proceedToDateTime()">
+          Elegir Día y Horario
+        </button>
+      </div>
     </div>
   </div>
 
@@ -241,8 +493,8 @@
   <div id="datetime-modal" class="modal-backdrop hidden">
     <div class="modal-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
-        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px;">
-          <span class="material-symbols-outlined" style="color: var(--color-primary);">event_available</span> Elegir Día y Horario
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); font-weight: 800;">
+          Elegir Día y Horario
         </h3>
         <button onclick="toggleModal('datetime-modal')" style="color: var(--color-secondary);"><span class="material-symbols-outlined">close</span></button>
       </div>
@@ -264,9 +516,67 @@
         </div>
       </div>
 
-      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="confirmFinalBooking()">
+      <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="reviewFinalBooking()">
         Confirmar Reserva Definitiva
       </button>
+    </div>
+  </div>
+
+  <!-- Modal Step 3: Review & Final Confirmation Modal -->
+  <div id="review-modal" class="modal-backdrop hidden">
+    <div class="modal-card" style="max-width: 500px; text-align: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); font-weight: 800;">
+          Confirmá tu Turno
+        </h3>
+        <button onclick="closeReviewModal()" style="color: var(--color-secondary); background: none; border: none; cursor: pointer;"><span class="material-symbols-outlined" style="font-size: 24px;">close</span></button>
+      </div>
+
+      <!-- Warning/Call to Attention Header -->
+      <div style="background-color: var(--status-warning-bg); padding: 12px 16px; border-radius: var(--radius-sm); text-align: left; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 10px;">
+        <span class="material-symbols-outlined" style="color: var(--status-warning); font-size: 22px; margin-top: 1px;">warning</span>
+        <div>
+          <strong style="font-size: 13.5px; color: var(--color-text-dark); display: block; margin-bottom: 2px;">Revisá la información</strong>
+          <span style="font-size: 12px; color: var(--color-secondary); line-height: 1.4;">Por favor, verificá que los datos ingresados sean correctos antes de confirmar tu cita.</span>
+        </div>
+      </div>
+
+      <!-- Details Box -->
+      <div style="background-color: var(--bg-surface-alt); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-light); text-align: left; margin-bottom: 28px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">local_hospital</span>
+          <div>
+            <span style="font-size: 11px; color: var(--color-secondary); display: block; text-transform: uppercase; font-weight: 700;">Centro Médico</span>
+            <strong id="reviewHospital" style="font-size: 14.5px; color: var(--color-text-dark);"></strong>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border-light); padding-top: 10px;">
+          <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">calendar_today</span>
+          <div>
+            <span style="font-size: 11px; color: var(--color-secondary); display: block; text-transform: uppercase; font-weight: 700;">Fecha Elegida</span>
+            <strong id="reviewDate" style="font-size: 14.5px; color: var(--color-text-dark);"></strong>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border-light); padding-top: 10px;">
+          <span class="material-symbols-outlined" style="color: var(--color-primary); font-size: 20px;">schedule</span>
+          <div>
+            <span style="font-size: 11px; color: var(--color-secondary); display: block; text-transform: uppercase; font-weight: 700;">Horario Asignado</span>
+            <strong id="reviewTime" style="font-size: 14.5px; color: var(--color-text-dark);"></strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 16px; justify-content: center;">
+        <button class="btn btn-outline" style="flex: 1; justify-content: center; font-weight: 700;" onclick="goBackToDateTime()">
+          Volver atrás
+        </button>
+        <button class="btn btn-primary" style="flex: 1; justify-content: center; font-weight: 700; background-color: var(--status-good); border-color: var(--status-good);" onclick="finalizeBookingRedirect()">
+          Confirmar Turno
+        </button>
+      </div>
     </div>
   </div>
 
@@ -288,16 +598,154 @@
       setTimeout(() => toggleModal('datetime-modal'), 100);
     }
 
+    // Questionnaire Multi-Step logic
+    let currentQuestionIndex = 0;
+    const questions = [
+      {
+        title: "Documentación",
+        text: "¿Tenés contigo tu DNI, Cédula o Pasaporte en original para presentar en el hospital?",
+        icon: "badge"
+      },
+      {
+        title: "Desayuno",
+        text: "¿Desayunaste o vas a desayunar hoy sin grasas ni lácteos antes de donar?",
+        icon: "restaurant"
+      },
+      {
+        title: "Peso y Edad",
+        text: "¿Tenés entre 16 y 65 años de edad y pesás más de 50 kg?",
+        icon: "scale"
+      },
+      {
+        title: "Intervalo de Donación",
+        text: "¿Pasaron al menos 8 semanas (2 meses) desde tu última donación de sangre?",
+        icon: "history"
+      },
+      {
+        title: "Tatuajes",
+        text: "¿Transcurrieron más de 6 meses desde tu último tatuaje o perforación?",
+        icon: "draw"
+      },
+      {
+        title: "Salud General",
+        text: "¿Te sentís bien hoy y descansaste / dormiste al menos 6 horas anoche?",
+        icon: "sentiment_satisfied"
+      }
+    ];
+
+    function startQuestionnaire() {
+      // Hide warning modal
+      toggleModal('warning-modal');
+      
+      // Reset questionnaire states
+      currentQuestionIndex = 0;
+      document.getElementById('question-card-content').style.display = 'block';
+      document.getElementById('question-result-fail').style.display = 'none';
+      document.getElementById('question-result-success').style.display = 'none';
+      
+      updateQuestionUI();
+      
+      // Show question modal
+      toggleModal('question-modal');
+    }
+
+    function updateQuestionUI() {
+      const q = questions[currentQuestionIndex];
+      document.getElementById('question-progress').innerText = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
+      document.getElementById('question-icon').innerText = q.icon;
+      document.getElementById('question-title').innerText = q.title;
+      document.getElementById('question-text').innerText = q.text;
+    }
+
+    function answerQuestion(isYes) {
+      if (!isYes) {
+        // Show fail state immediately
+        document.getElementById('question-card-content').style.display = 'none';
+        document.getElementById('question-result-fail').style.display = 'block';
+      } else {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          updateQuestionUI();
+        } else {
+          // All questions answered Yes -> show success state
+          document.getElementById('question-card-content').style.display = 'none';
+          document.getElementById('question-result-success').style.display = 'block';
+        }
+      }
+    }
+
+    function closeQuestionnaire() {
+      toggleModal('question-modal');
+    }
+
+    function goBackQuestion() {
+      if (currentQuestionIndex === 0) {
+        // Return to warning modal
+        toggleModal('question-modal');
+        toggleModal('warning-modal');
+      } else {
+        // Return to previous question
+        currentQuestionIndex--;
+        updateQuestionUI();
+      }
+    }
+
+    function returnToWarningModal() {
+      toggleModal('question-modal');
+      toggleModal('warning-modal');
+    }
+
+    function proceedToDateTime() {
+      toggleModal('question-modal');
+      setTimeout(() => toggleModal('datetime-modal'), 100);
+    }
+
     function selectSlot(btn) {
       document.querySelectorAll('.time-slot-btn').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       chosenTime = btn.innerText;
     }
 
-    function confirmFinalBooking() {
-      const dateVal = document.getElementById('bookingDate').value;
-      alert(`¡Reserva Exitosa en ${chosenHospital}!\nFecha: ${dateVal} - Horario: ${chosenTime}\n\nTe esperamos con entusiasmo.`);
+    function reviewFinalBooking() {
+      // Hide datetime modal
       toggleModal('datetime-modal');
+      
+      // Get selected date and time
+      const dateVal = document.getElementById('bookingDate').value;
+      
+      // Format the date nicely to Spanish
+      let formattedDate = dateVal;
+      if (dateVal) {
+        const parts = dateVal.split('-');
+        if (parts.length === 3) {
+          const dateObj = new Date(parts[0], parts[1] - 1, parts[2]);
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          formattedDate = dateObj.toLocaleDateString('es-AR', options);
+          // Capitalize first letter
+          formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+        }
+      }
+      
+      // Set modal texts
+      document.getElementById('reviewHospital').innerText = chosenHospital;
+      document.getElementById('reviewDate').innerText = formattedDate;
+      document.getElementById('reviewTime').innerText = chosenTime;
+      
+      // Open review modal
+      toggleModal('review-modal');
+    }
+
+    function goBackToDateTime() {
+      toggleModal('review-modal');
+      setTimeout(() => toggleModal('datetime-modal'), 100);
+    }
+
+    function closeReviewModal() {
+      toggleModal('review-modal');
+    }
+
+    function finalizeBookingRedirect() {
+      toggleModal('review-modal');
       window.location.href = 'mis-turnos.html';
     }
   </script>

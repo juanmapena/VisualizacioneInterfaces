@@ -104,19 +104,11 @@
     <main class="dash-main">
       <!-- Content Body -->
       <div class="dash-content-body container">
-        <h1 class="dash-page-title">Mis Turnos</h1>
-        <div style="margin-bottom: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-          <div>
-            <h2 style="font-family: var(--font-heading); font-size: 26px; color: var(--color-text-dark); margin-bottom: 6px;">Gestión de Citas</h2>
-            <p style="font-size: 15px; color: var(--color-secondary);">Revisá los detalles de tus próximos turnos o agendá una nueva donación.</p>
-          </div>
-          <a href="agendar-turno.html" class="btn btn-primary">
-            <span class="material-symbols-outlined">add</span> Agendar Nuevo Turno
-          </a>
-        </div>
+        <h1 class="dash-page-title" style="margin-bottom: 8px;">Mis Turnos</h1>
+        <p style="font-size: 15px; color: var(--color-secondary); margin-bottom: 32px;">Revisá el detalle de tu próximo turno.</p>
 
         <!-- Appointments Stack -->
-        <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 80px;">
           <!-- Upcoming Primary Appointment Card -->
           <div class="stock-card" style="padding: 28px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
@@ -131,26 +123,21 @@
                 
                 <div style="display: flex; flex-direction: column; gap: 8px; color: var(--color-secondary); font-size: 14px;">
                   <div style="display: flex; align-items: center; gap: 8px;">
-                    <span class="material-symbols-outlined" style="color: var(--color-primary);">location_on</span>
-                    <span id="cardHospitalAddress">Av. Córdoba 2351, Ciudad Autónoma de Buenos Aires</span>
-                  </div>
-                  <div style="display: flex; align-items: center; gap: 8px;">
                     <span class="material-symbols-outlined" style="color: var(--color-primary);">schedule</span>
                     <span id="cardHospitalTime">Jueves, 12 de Octubre - 09:30 AM</span>
-                  </div>
-                  <div style="display: flex; align-items: center; gap: 8px;">
-                    <span class="material-symbols-outlined" style="color: var(--color-primary);">bloodtype</span>
-                    Tipo de Donación: Sangre Entera (Factor A+)
                   </div>
                 </div>
               </div>
 
               <div style="display: flex; flex-direction: column; gap: 10px; min-width: 180px;">
-                <button class="btn btn-primary" onclick="showConfirmModal()" style="width: 100%; justify-content: center;">
-                  Confirmar Asistencia
+                <button class="btn btn-outline" onclick="showConfirmModal()" style="width: 100%; justify-content: center; font-size: 13px; color: var(--color-text-dark); border-color: var(--border-color); background: transparent;">
+                  Ver detalle
                 </button>
-                <button class="btn btn-outline" onclick="showReprogramModal()" style="width: 100%; justify-content: center; font-size: 13px;">
+                <button class="btn btn-outline" onclick="showReprogramModal()" style="width: 100%; justify-content: center; font-size: 13px; color: var(--color-text-dark); border-color: var(--border-color); background: transparent;">
                   Reprogramar Turno
+                </button>
+                <button class="btn" onclick="cancelAppointment()" style="width: 100%; justify-content: center; font-size: 13px; background-color: #d32f2f; border-color: #d32f2f; color: #ffffff; font-weight: 700;">
+                  Cancelar Turno
                 </button>
               </div>
             </div>
@@ -216,7 +203,7 @@
     <div class="modal-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
         <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--color-text-dark); display: flex; align-items: center; gap: 8px;">
-          <span class="material-symbols-outlined" style="color: var(--status-good);">verified</span> Información del Turno Confirmado
+          <span class="material-symbols-outlined" style="color: var(--color-primary);">info</span> Detalle de su turno
         </h3>
         <button onclick="toggleModal('confirm-modal')" style="color: var(--color-secondary);"><span class="material-symbols-outlined">close</span></button>
       </div>
@@ -312,6 +299,17 @@
       
       toggleModal('reprogram-modal');
       alert('¡Tu turno ha sido reprogramado exitosamente!');
+    }
+
+    function cancelAppointment() {
+      if (confirm('¿Está seguro de que desea cancelar este turno?')) {
+        alert('El turno ha sido cancelado exitosamente.');
+        const card = document.querySelector('.stock-card');
+        card.innerHTML = `<div style="text-align: center; padding: 20px;">
+          <span class="material-symbols-outlined" style="font-size: 48px; color: var(--color-secondary); margin-bottom: 12px;">event_busy</span>
+          <p style="font-size: 16px; font-weight: 700; color: var(--color-text-dark); margin: 0;">No tenés turnos programados.</p>
+        </div>`;
+      }
     }
   </script>
 
